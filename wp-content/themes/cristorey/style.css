@@ -1,0 +1,683 @@
+/*
+Theme Name: Assembler
+Theme URI: https://wordpress.com/theme/assembler
+Author: Automattic
+Author URI: https://automattic.com/
+Description: Assemble something beautiful.
+Requires at least: 6.4
+Tested up to: 6.9
+Requires PHP: 7.2
+Version: 0.0.106
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: assembler
+Tags: blog, one-column, three-columns, wide-blocks, block-patterns, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, rtl-language-support, style-variations, template-editing, theme-options, threaded-comments, translation-ready
+*/
+
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Set default line height for font size presets. */
+
+.has-xx-large-font-size,
+.has-xxx-large-font-size {
+    line-height: 1;
+}
+
+/* ====== Unified Button Hover System ====== */
+
+.wp-element-button,
+.wp-block-button__link {
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        background-color 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.wp-element-button:hover,
+.wp-block-button__link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(11, 29, 55, 0.12);
+}
+
+.wp-element-button:active,
+.wp-block-button__link:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Sticky Header */
+.is-sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--wp--preset--color--theme-1);
+    /* Cloud Dancer */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+/* ====== Scroll Reveal ====== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s cubic-bezier(0.165, 0.84, 0.44, 1),
+        transform 0.9s cubic-bezier(0.165, 0.84, 0.44, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Forms: Thumb-friendly */
+input:not([type=submit]):not([type=checkbox]):not([type=radio]):not([type=range]),
+textarea {
+    min-height: 50px;
+    padding: 12px 16px;
+    font-size: 16px;
+}
+
+/* Hero Video */
+.hero-video-section {
+    position: relative;
+    overflow: hidden;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-video-container {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(11, 29, 55, 0.7), rgba(11, 29, 55, 0.5));
+    /* Deep Blue gradient */
+    z-index: 0;
+}
+
+.hero-video-container>.wp-block-group {
+    position: relative;
+    z-index: 1;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-tagline {
+    font-family: var(--wp--preset--font-family--cinzel-decorative) !important;
+    letter-spacing: 0.1em;
+}
+
+.header-cta-buttons {
+    margin-left: 20px;
+}
+
+@media (max-width: 782px) {
+    .header-cta-buttons {
+        display: none;
+    }
+}
+
+/* Fields */
+
+label,
+.jetpack-field-label .rich-text.jetpack-field-label__input,
+.contact-form .grunion-checkbox-multiple-options legend,
+.contact-form .grunion-radio-options legend,
+.wp-block-jetpack-contact-form-container .wp-block-jetpack-contact-form label {
+    display: inline-block;
+    font-size: var(--wp--preset--font-size--small);
+    margin-bottom: 0.25em;
+    font-weight: inherit;
+}
+
+textarea,
+input:not([type=submit]):not([type=checkbox]):not([type=radio]):not([type=range]),
+.wp-block-post-comments-form textarea,
+.wp-block-post-comments-form input:not([type=submit]):not([type=checkbox]):not([type=radio]),
+.jetpack-contact-form .jetpack-field .jetpack-field__input,
+.jetpack-contact-form .jetpack-field .jetpack-field__textarea {
+    backdrop-filter: saturate(1.075);
+    background-color: transparent;
+    border-color: currentColor;
+    border-style: solid;
+    border-radius: 6px;
+    border-width: 1px;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: currentColor;
+    filter: brightness(1.05);
+    font-size: var(--wp--preset--font-size--small);
+    font-weight: inherit;
+    line-height: 1.5;
+    min-height: 42px;
+    padding: 0.8rem 1rem;
+    width: 100%;
+}
+
+textarea:focus,
+input:not([type=submit]):focus,
+.wp-block-post-comments-form textarea:focus,
+.wp-block-post-comments-form input:not([type=submit]):not([type=checkbox]):not([type=radio]):focus {
+    outline: 1px solid currentColor;
+}
+
+textarea::placeholder,
+.input::placeholder,
+.wp-block-jetpack-subscriptions__form .components-base-control__field input::placeholder {
+    color: color-mix(in srgb, currentColor 60%, transparent);
+}
+
+/* Padding adjustment for input fiedls in Woo */
+.wc-block-components-form .wc-block-components-text-input input:-webkit-autofill,
+.wc-block-components-form .wc-block-components-text-input.is-active input[type=email],
+.wc-block-components-form .wc-block-components-text-input.is-active input[type=number],
+.wc-block-components-form .wc-block-components-text-input.is-active input[type=password],
+.wc-block-components-form .wc-block-components-text-input.is-active input[type=tel],
+.wc-block-components-form .wc-block-components-text-input.is-active input[type=text],
+.wc-block-components-form .wc-block-components-text-input.is-active input[type=url],
+.wc-block-components-text-input input:-webkit-autofill,
+.wc-block-components-text-input.is-active input[type=email],
+.wc-block-components-text-input.is-active input[type=number],
+.wc-block-components-text-input.is-active input[type=password],
+.wc-block-components-text-input.is-active input[type=tel],
+.wc-block-components-text-input.is-active input[type=text],
+.wc-block-components-text-input.is-active input[type=url] {
+    padding: 1.5em .5em .5em;
+}
+
+
+/* Jetpack Forms: Clean up errors */
+
+.contact-form__error {
+    font-size: 13px;
+}
+
+.contact-form__input-error {
+    font-size: 13px;
+    gap: 8px;
+}
+
+.contact-form__input-error .contact-form__warning-icon {
+    border-width: 0;
+}
+
+/* Jetpack Forms: Animated block style tweaks */
+
+.contact-form .is-style-animated .grunion-field-wrap.grunion-field-select-wrap .animated-label__label label,
+.contact-form .is-style-animated .grunion-field-wrap .grunion-field.has-placeholder~.animated-label__label label,
+.contact-form .is-style-animated .grunion-field-wrap .grunion-field:focus~.animated-label__label label,
+.contact-form .is-style-animated .grunion-field-wrap .grunion-field:not(:placeholder-shown)~.animated-label__label label {
+    opacity: 0.7;
+    font-size: 11px;
+}
+
+/* Styling for hero areas. */
+.header-cover .wp-block-template-part {
+    max-width: none;
+}
+
+.header-cover .wp-block-template-part>.wp-block-group {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Cover block styles */
+.wp-block-cover[class*="is-style-section"]:not(.is-style-default) .wp-block-cover__image-background {
+    opacity: 0.25;
+}
+
+.wp-block-cover[class*="is-style-section"]:not(.is-style-default) .wp-block-cover__background {
+    opacity: 0;
+}
+
+:root :where(.wp-block-cover.is-light) {
+    color: var(--wp--preset--color--theme-5, #000);
+}
+
+.wp-block-cover[class*="is-style-section"]:not(.is-style-default) .wp-block-cover__background {
+    opacity: 0;
+}
+
+/* Make sure footers have no margin. */
+footer {
+    margin-top: 0 !important;
+}
+
+/* Social Links: Better default color. */
+
+.wp-block-social-links.is-style-logos-only li.wp-social-link {
+    color: currentcolor;
+}
+
+.wp-block-social-links.is-style-logos-only .wp-social-link svg {
+    height: 1em;
+    width: 1em;
+}
+
+.wp-block-social-links.has-small-icon-size {
+    font-size: 20px;
+}
+
+/* Navigation: Remove row gap to improve wrapping behavior */
+.wp-block-navigation__container {
+    row-gap: 0;
+}
+
+/* Move header core/navigation to the right on mobile. */
+
+.order-0 {
+    order: 0;
+}
+
+.order-1 {
+    order: 1;
+}
+
+.grow-0 {
+    flex-grow: 0;
+}
+
+.grow {
+    flex-grow: 1;
+}
+
+@media (min-width: 600px) {
+
+    .md\:order-0 {
+        order: 0;
+    }
+
+    .md\:order-1 {
+        order: 1;
+    }
+
+    .md\:grow-0 {
+        flex-grow: 0;
+    }
+
+    .md\:grow {
+        flex-grow: 1;
+    }
+
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+/* Utility class for wide and full images with aspect ratios, as core does not support this yet. */
+.aspect-16\/9 {
+    aspect-ratio: 16/9;
+}
+
+.aspect-16\/9 img,
+.aspect-16\/9 .components-placeholder {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+/* Ensure cropping works. */
+.aspect-16\/9 .wp-block-image__crop-area,
+.aspect-16\/9 .wp-block-image__crop-area img {
+    aspect-ratio: unset;
+}
+
+/* WooCommerce Catalog Sorting Styles */
+.wc-block-catalog-sorting {
+    position: relative;
+}
+
+.wc-block-catalog-sorting>div,
+.wc-block-catalog-sorting .woocommerce-ordering {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+}
+
+.wc-block-catalog-sorting>div>label,
+.woocommerce .woocommerce-ordering>label {
+    margin: 0;
+    text-wrap: nowrap;
+}
+
+.wc-block-catalog-sorting select.orderby {
+    appearance: none;
+    background-color: transparent;
+    border: 1px solid color-mix(in srgb, currentColor 50%, transparent);
+    font-family: inherit;
+    font-size: inherit;
+    border-radius: 6px;
+    color: currentColor;
+    cursor: pointer;
+    padding: 0.75rem 2.5rem 0.75rem 0.75rem;
+    width: 100%;
+}
+
+/* Arrow using CSS triangle for dynamic color */
+.wc-block-catalog-sorting::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0.75rem;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 0.35em solid transparent;
+    border-right: 0.35em solid transparent;
+    border-top: 0.4em solid currentColor;
+    pointer-events: none;
+}
+
+/* Make sure the CSS triangle stays the same when it's hovered or selected */
+.is-outline-mode .block-editor-block-list__block.wc-block-catalog-sorting:not(.remove-outline):not(.rich-text):not([contenteditable=true]).is-selected:after,
+.is-outline-mode .block-editor-block-list__block.wc-block-catalog-sorting:not(.remove-outline).is-hovered:not(.is-selected):after {
+    left: auto;
+    outline-color: transparent;
+    right: 0.75rem;
+    top: 50%;
+}
+
+/* Remove an extra border from the qty selector */
+.wc-block-components-quantity-selector input.input-text.qty.text,
+input:not([type=submit]):not([type=checkbox]):not([type=radio]):not([type=range]).wc-block-components-quantity-selector__input {
+    border-style: none;
+}
+
+/* Reset padding for the qty selector */
+input:not([type=submit]):not([type=checkbox]):not([type=radio]):not([type=range]).qty {
+    padding: inherit;
+}
+
+/* Remove unwated right margin the qty selector */
+.woocommerce div.product form.cart div.quantity .qty {
+    margin-right: 0;
+}
+
+/* Fix the qty selector height so it matches with the button next to it */
+.wp-block-add-to-cart-with-options .wc-block-components-quantity-selector {
+    height: 100%;
+}
+
+/* Make sure the qty selector's height is the same as the button next to it in the editor */
+.wc-block-add-to-cart-with-options__quantity-selector>div,
+.wc-block-add-to-cart-with-options__quantity-selector .wc-block-components-quantity-selector {
+    height: 100%;
+}
+
+/* Remove unnecessary bottom margin from the variation selector labels */
+.woocommerce-page label.wp-block-woocommerce-add-to-cart-with-options-variation-selector-attribute-name,
+.woocommerce-page label.wc-block-add-to-cart-with-options-variation-selector-attribute-options__pill {
+    margin-bottom: 0;
+}
+
+/* Remove unwanted top margin from the title of the order confirmation page template */
+.wc-block-order-confirmation-status h1 {
+    margin-top: 0;
+}
+
+/* Add top margin to the express checkout */
+.wcpay-express-checkout-wrapper {
+    margin-top: var(--wp--style--block-gap);
+}
+
+/* Remove unwanted margin from the attribute value */
+.wp-block-product-specifications-item__value p {
+    margin: 0;
+}
+
+/* Remove underline from the attribute value */
+.wp-block-product-specifications-item__value p a {
+    text-decoration: none;
+}
+
+.wp-block-woocommerce-product-specifications th,
+.wp-block-woocommerce-product-specifications td {
+    border-color: color-mix(in srgb, currentColor 30%, transparent);
+}
+
+/* Reset unwanted margins */
+.wc-block-components-product-summary,
+.wc-block-components-product-summary p {
+    margin: 0;
+}
+
+/* Make sure the paragraph has a line break */
+.wc-block-components-product-summary p+p {
+    margin-top: var(--wp--style--block-gap);
+}
+
+/* Remove underline from the product name inside cart */
+.wc-block-cart-item__wrap .wc-block-components-product-name {
+    text-decoration: none;
+}
+
+/* Utility class for reversing the order of rows */
+@media (min-width: 782px) {
+    .wp-block-columns.row-reverse {
+        flex-direction: row-reverse;
+    }
+}
+
+/* Reduce the size of the cart badge. */
+.theme-assembler .wc-block-mini-cart__badge {
+    font-size: .6em;
+}
+
+/* Fix Woo input field */
+.theme-assembler .woocommerce div.product form.cart div.quantity .qty {
+    min-width: 80px;
+}
+
+/* ====== Pattern-Specific Styles ====== */
+
+/* Verbum Domini Cards (scoped to post templates) */
+.wp-block-post-template .wp-block-group {
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    height: 100%;
+}
+
+.wp-block-post-template .wp-block-group:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(11, 29, 55, 0.12);
+}
+
+/* Service Cards (scoped class — add .service-card to columns) */
+.service-card {
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(11, 29, 55, 0.1);
+}
+
+/* Ministry / Cover Hero */
+.wp-block-cover__inner-container h1 {
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    font-family: var(--wp--preset--font-family--cinzel-decorative);
+}
+
+/* Sacrament Form Styling */
+.sacrament-form input:focus,
+.sacrament-form select:focus {
+    outline: none;
+    border-color: var(--wp--preset--color--theme-3) !important;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+/* Member Portal Card */
+.wp-block-column.has-theme-5-background-color {
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Footer link cleanup */
+footer a {
+    color: var(--wp--preset--color--theme-4);
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+footer a:hover {
+    color: var(--wp--preset--color--theme-3);
+}
+
+footer .wp-block-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+footer .wp-block-list li {
+    padding: 4px 0;
+}
+
+/* =========================================
+   Phase 2: Core Enhancements & Accessibility
+   ========================================= */
+
+/* 1. Global Focus Styles (Accessibility) */
+:focus-visible {
+    outline: 2px solid var(--wp--preset--color--theme-3);
+    outline-offset: 2px;
+}
+
+/* 2. Skip Link */
+.skip-link {
+    position: absolute;
+    top: -9999px;
+    left: 1rem;
+    z-index: 9999;
+    padding: 1rem;
+    background-color: var(--wp--preset--color--theme-5);
+    color: var(--wp--preset--color--theme-3);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
+    opacity: 0;
+}
+
+.skip-link:focus {
+    top: 1rem;
+    opacity: 1;
+}
+
+/* 3. Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* 4. Button Variants (Utility Classes) */
+.btn--primary,
+.wp-block-button__link.is-style-fill {
+    background-color: var(--wp--preset--color--theme-2);
+    color: var(--wp--preset--color--theme-1);
+    border: 1px solid var(--wp--preset--color--theme-2);
+}
+
+.btn--primary:hover,
+.wp-block-button__link.is-style-fill:hover {
+    background-color: var(--wp--preset--color--theme-5);
+    border-color: var(--wp--preset--color--theme-5);
+    color: var(--wp--preset--color--theme-3);
+}
+
+.btn--secondary,
+.wp-block-button__link.is-style-outline {
+    background-color: transparent;
+    color: var(--wp--preset--color--theme-2);
+    border: 1px solid currentColor;
+}
+
+.btn--secondary:hover,
+.wp-block-button__link.is-style-outline:hover {
+    background-color: var(--wp--preset--color--theme-5);
+    color: var(--wp--preset--color--theme-4);
+    border-color: var(--wp--preset--color--theme-5);
+}
+
+.btn--ghost {
+    background: transparent;
+    color: var(--wp--preset--color--theme-2);
+    border: none;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.btn--ghost:hover {
+    color: var(--wp--preset--color--theme-3);
+    transform: none;
+    box-shadow: none;
+}
+
+/* 5. Glassmorphism Utility */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 6. Sticky Header State */
+.is-sticky-header.scrolled {
+    padding-top: var(--wp--preset--spacing--10) !important;
+    padding-bottom: var(--wp--preset--spacing--10) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: rgba(240, 238, 233, 0.95);
+    /* Theme-1 with opacity */
+    backdrop-filter: blur(8px);
+}
+
+/* 7. Staggered Reveals */
+.reveal-delay-1 {
+    transition-delay: 100ms;
+}
+
+.reveal-delay-2 {
+    transition-delay: 200ms;
+}
+
+.reveal-delay-3 {
+    transition-delay: 300ms;
+}
