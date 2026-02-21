@@ -1,9 +1,46 @@
-# WordPress
-wp-config.php
-wp-content/uploads/
-wp-content/cache/
-wp-content/upgrade/
-node_modules/
+# ===========================================
+# Ignorar TODO por defecto
+# ===========================================
+/*
+
+# ===========================================
+# Permitir archivos de configuración del repo
+# ===========================================
+!.gitignore
+!.env.example
+!README.md
+
+# ===========================================
+# Permitir carpeta automation/ y todo su contenido
+# ===========================================
+!automation/
+!automation/**
+
+# ===========================================
+# Permitir carpeta scripts/ y todo su contenido
+# ===========================================
+!scripts/
+!scripts/**
+
+# ===========================================
+# Permitir SOLO el tema personalizado
+# ===========================================
+!wp-content/
+wp-content/*
+!wp-content/themes/
+wp-content/themes/*
+!wp-content/themes/cristorey/
+!wp-content/themes/cristorey/**
+
+# ===========================================
+# Excluir archivos generados dentro del tema
+# ===========================================
+wp-content/themes/cristorey/node_modules/
+
+# ===========================================
+# Excluir archivos sensibles siempre
+# ===========================================
+.env
+*.log
 .vscode/
 .idea/
-*.log
