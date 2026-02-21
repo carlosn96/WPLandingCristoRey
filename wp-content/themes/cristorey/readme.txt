@@ -1,5 +1,5 @@
-=== Assembler ===
-Contributors: Automattic
+=== Cristo Rey ===
+Contributors: Jan Dev
 Requires at least: 6.4
 Tested up to: 6.9
 Requires PHP: 7.2
@@ -8,9 +8,12 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-Assemble something beautiful.
+Tema personalizado para la Parroquia Cristo Rey del Universo.
 
 == Changelog ==
+
+= 1.0.0 =
+* Lanzamiento inicial para producción.
 
 = 0.0.106 =
 * Convert  header/footer templates into patterns with translatable strings
