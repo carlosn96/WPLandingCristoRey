@@ -15,6 +15,7 @@ import os
 import sys
 import json
 import requests
+import mimetypes
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -44,7 +45,7 @@ def get_api_url(endpoint: str) -> str:
     return f"{WP_URL}/wp-json/wp/v2/{endpoint}"
 
 
-def create_post(title: str, content: str, status: str = "draft") -> dict:
+def create_post(title: str, content: str, status: str = "draft", featured_media: int = None) -> dict:
     """
     Crea un nuevo post en WordPress.
 
@@ -52,18 +53,23 @@ def create_post(title: str, content: str, status: str = "draft") -> dict:
         title: Título del post
         content: Contenido HTML del post
         status: 'draft', 'publish', o 'pending' (default: 'draft')
+        featured_media: ID del medio a usar como imagen destacada (opcional)
 
     Returns:
         dict con la respuesta de la API
     """
+    payload = {
+        "title": title,
+        "content": content,
+        "status": status,
+    }
+    if featured_media:
+        payload["featured_media"] = featured_media
+
     response = requests.post(
         get_api_url("posts"),
         auth=get_auth(),
-        json={
-            "title": title,
-            "content": content,
-            "status": status,
-        },
+        json=payload,
     )
     response.raise_for_status()
     data = response.json()
@@ -71,7 +77,7 @@ def create_post(title: str, content: str, status: str = "draft") -> dict:
     return data
 
 
-def create_page(title: str, content: str, status: str = "draft") -> dict:
+def create_page(title: str, content: str, status: str = "draft", featured_media: int = None) -> dict:
     """
     Crea una nueva página en WordPress.
 
@@ -79,18 +85,23 @@ def create_page(title: str, content: str, status: str = "draft") -> dict:
         title: Título de la página
         content: Contenido HTML de la página
         status: 'draft', 'publish', o 'pending' (default: 'draft')
+        featured_media: ID del medio a usar como imagen destacada (opcional)
 
     Returns:
         dict con la respuesta de la API
     """
+    payload = {
+        "title": title,
+        "content": content,
+        "status": status,
+    }
+    if featured_media:
+        payload["featured_media"] = featured_media
+
     response = requests.post(
         get_api_url("pages"),
         auth=get_auth(),
-        json={
-            "title": title,
-            "content": content,
-            "status": status,
-        },
+        json=payload,
     )
     response.raise_for_status()
     data = response.json()
@@ -111,6 +122,45 @@ def list_posts(per_page: int = 10) -> list:
     for post in posts:
         print(f"   - [{post['id']}] {post['title']['rendered']} ({post['status']})")
     return posts
+
+
+def upload_media(file_path: str) -> dict:
+    """
+    Sube un archivo multimedia a WordPress y retorna el ID.
+
+    Args:
+        file_path: Ruta al archivo local (ej: 'imagenes/foto.jpg')
+
+    Returns:
+        dict con la respuesta de la API, incluyendo el ID del medio.
+    """
+    path = Path(file_path)
+    if not path.exists():
+        print(f"❌ Error: Archivo no encontrado: {file_path}")
+        return None
+
+    mime_type, _ = mimetypes.guess_type(path)
+    if not mime_type:
+        mime_type = "application/octet-stream"
+
+    headers = {
+        "Content-Disposition": f'attachment; filename="{path.name}"',
+        "Content-Type": mime_type,
+    }
+
+    with open(path, "rb") as f:
+        data = f.read()
+
+    response = requests.post(
+        get_api_url("media"),
+        auth=get_auth(),
+        headers=headers,
+        data=data,
+    )
+    response.raise_for_status()
+    response_data = response.json()
+    print(f"🖼️ Media subido exitosamente: '{path.name}' (ID: {response_data['id']})")
+    return response_data
 
 
 def load_template(template_name: str) -> str:
