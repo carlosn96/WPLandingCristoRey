@@ -23,14 +23,27 @@
 !scripts/**
 
 # ===========================================
-# Permitir SOLO el tema personalizado
+# Permitir Tema Personalizado y Plugins Propios
 # ===========================================
 !wp-content/
 wp-content/*
+
+# 1. Tema personalizado
 !wp-content/themes/
 wp-content/themes/*
 !wp-content/themes/cristorey/
 !wp-content/themes/cristorey/**
+
+# 2. Must-Use Plugins (lógica de backend)
+!wp-content/mu-plugins/
+!wp-content/mu-plugins/**
+
+# 3. Custom Plugins (añade tu plugin personalizado aquí)
+!wp-content/plugins/
+wp-content/plugins/*
+# Ejemplo para incluir tu plugin:
+# !wp-content/plugins/mi-helper-ia/
+# !wp-content/plugins/mi-helper-ia/**
 
 # ===========================================
 # Excluir archivos generados dentro del tema
