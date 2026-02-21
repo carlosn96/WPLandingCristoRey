@@ -9,6 +9,7 @@
 !.gitignore
 !.env.example
 !README.md
+# OPERATING_PROTOCOL.md es expresamente omitido para evitar subirlo a Git
 
 # ===========================================
 # Permitir carpeta automation/ y todo su contenido
