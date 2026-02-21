@@ -91,59 +91,14 @@ function assembler_scripts()
 
 	wp_enqueue_style('assembler-style');
 
-	// Interactive behaviors (Sticky Header + Scroll Reveal)
-	$script_data = <<<'JS'
-    document.addEventListener('DOMContentLoaded', function() {
-        // 1. Reduced Motion Check
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-        // 2. Scroll Reveal (IntersectionObserver)
-        if (!prefersReducedMotion) {
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        // Stagger effect based on index/order if needed, or just standard
-                        setTimeout(() => {
-                            entry.target.classList.add('active');
-                        }, 100); // slight delay to ensure smooth entry
-                        revealObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-        }
-
-        // 3. Sticky Header State
-        const header = document.querySelector('.is-sticky-header');
-        if (header) {
-            const headerObserver = new IntersectionObserver(([e]) => {
-                e.target.classList.toggle('scrolled', e.intersectionRatio < 1);
-            }, { threshold: [1] });
-
-            // Create a sentinel to detect when header is unstuck (at top)
-            const sentinel = document.createElement('div');
-            sentinel.style.position = 'absolute';
-            sentinel.style.top = '0';
-            sentinel.style.height = '1px';
-            sentinel.style.width = '100%';
-            sentinel.style.pointerEvents = 'none';
-            document.body.prepend(sentinel);
-
-            // Observe the sentinel
-            const stickyObserver = new IntersectionObserver(([e]) => {
-                header.classList.toggle('scrolled', !e.isIntersecting);
-            }, { rootMargin: '-1px 0px 0px 0px', threshold: [1] });
-            
-            stickyObserver.observe(sentinel);
-        }
-    });
-JS;
-
-	// Register script with defer strategy
-	wp_register_script('assembler-script', false, array(), false, array('strategy' => 'defer'));
-	wp_enqueue_script('assembler-script');
-	wp_add_inline_script('assembler-script', $script_data);
+	// Cristo Rey UX Engine (external file — replaces inline JS)
+	wp_enqueue_script(
+		'cristorey-ux',
+		get_theme_file_uri('assets/js/cristorey-ux.js'),
+		array(),
+		wp_get_theme()->get('Version'),
+		array('strategy' => 'defer', 'in_footer' => true)
+	);
 }
 add_action('wp_enqueue_scripts', 'assembler_scripts');
 
@@ -182,65 +137,65 @@ function assembler_head_optimizations()
 
 	<!-- Schema.org JSON-LD -->
 	<script type="application/ld+json">
-						{
-						  "@context": "https://schema.org",
-						  "@type": "CatholicChurch",
-						  "@id": "<?php echo esc_url(home_url('/#organization')); ?>",
-						  "name": "Parroquia Cristo Rey del Universo",
-						  "description": "Una comunidad católica basada en la Espiritualidad de la Comunión y Fraternidad.",
-						  "url": "<?php echo esc_url(home_url()); ?>",
-						  "logo": "<?php echo esc_url(get_site_icon_url()); ?>",
-						  "image": "<?php echo esc_url(get_site_icon_url()); ?>",
-						  "address": {
-							"@type": "PostalAddress",
-							"streetAddress": "Calle del Santuario #123",
-							"addressLocality": "Ciudad",
-							"addressRegion": "Jalisco",
-							"postalCode": "12345",
-							"addressCountry": "MX"
-						  },
-						  "geo": {
-							"@type": "GeoCoordinates",
-							"latitude": 20.659698,
-							"longitude": -103.349609
-						  },
-						  "telephone": "+52-33-1234-5678",
-						  "openingHoursSpecification": [
 							{
-							  "@type": "OpeningHoursSpecification",
-							  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-							  "opens": "09:00",
-							  "closes": "19:00"
-							},
-							{
-							  "@type": "OpeningHoursSpecification",
-							  "dayOfWeek": "Saturday",
-							  "opens": "10:00",
-							  "closes": "20:00"
-							},
-							{
-							  "@type": "OpeningHoursSpecification",
-							  "dayOfWeek": "Sunday",
-							  "opens": "08:00",
-							  "closes": "21:00"
+							  "@context": "https://schema.org",
+							  "@type": "CatholicChurch",
+							  "@id": "<?php echo esc_url(home_url('/#organization')); ?>",
+							  "name": "Parroquia Cristo Rey del Universo",
+							  "description": "Una comunidad católica basada en la Espiritualidad de la Comunión y Fraternidad.",
+							  "url": "<?php echo esc_url(home_url()); ?>",
+							  "logo": "<?php echo esc_url(get_site_icon_url()); ?>",
+							  "image": "<?php echo esc_url(get_site_icon_url()); ?>",
+							  "address": {
+								"@type": "PostalAddress",
+								"streetAddress": "Calle del Santuario #123",
+								"addressLocality": "Ciudad",
+								"addressRegion": "Jalisco",
+								"postalCode": "12345",
+								"addressCountry": "MX"
+							  },
+							  "geo": {
+								"@type": "GeoCoordinates",
+								"latitude": 20.659698,
+								"longitude": -103.349609
+							  },
+							  "telephone": "+52-33-1234-5678",
+							  "openingHoursSpecification": [
+								{
+								  "@type": "OpeningHoursSpecification",
+								  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+								  "opens": "09:00",
+								  "closes": "19:00"
+								},
+								{
+								  "@type": "OpeningHoursSpecification",
+								  "dayOfWeek": "Saturday",
+								  "opens": "10:00",
+								  "closes": "20:00"
+								},
+								{
+								  "@type": "OpeningHoursSpecification",
+								  "dayOfWeek": "Sunday",
+								  "opens": "08:00",
+								  "closes": "21:00"
+								}
+							  ]
 							}
-						  ]
-						}
-						</script>
+							</script>
 	<script type="application/ld+json">
-						{
-						  "@context": "https://schema.org",
-						  "@type": "WebSite",
-						  "@id": "<?php echo esc_url(home_url('/#website')); ?>",
-						  "url": "<?php echo esc_url(home_url()); ?>",
-						  "name": "<?php echo esc_js(get_bloginfo('name')); ?>",
-						  "description": "<?php echo esc_js(get_bloginfo('description')); ?>",
-						  "publisher": {
-							"@id": "<?php echo esc_url(home_url('/#organization')); ?>"
-						  },
-						  "inLanguage": "es-MX"
-						}
-						</script>
+							{
+							  "@context": "https://schema.org",
+							  "@type": "WebSite",
+							  "@id": "<?php echo esc_url(home_url('/#website')); ?>",
+							  "url": "<?php echo esc_url(home_url()); ?>",
+							  "name": "<?php echo esc_js(get_bloginfo('name')); ?>",
+							  "description": "<?php echo esc_js(get_bloginfo('description')); ?>",
+							  "publisher": {
+								"@id": "<?php echo esc_url(home_url('/#organization')); ?>"
+							  },
+							  "inLanguage": "es-MX"
+							}
+							</script>
 	<?php
 }
 add_action('wp_head', 'assembler_head_optimizations');
