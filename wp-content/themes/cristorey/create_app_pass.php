@@ -1,5 +1,5 @@
 <?php
-require_once('../../../wp-load.php');
+require_once('/home/u487588057/domains/temp.cristoreyrc.com/public_html/wp-load.php');
 
 $user_id = 1; // El admin identificado
 $app_pass_name = 'Agente_Antigravity_' . time();
