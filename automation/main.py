@@ -81,6 +81,7 @@ def create_post(title: str, content: str, status: str = "draft", featured_media:
         get_api_url("posts"),
         auth=get_auth(),
         headers=get_headers(),
+        params={"_wp_auth": get_headers()["X-WP-Auth"]},
         json=payload,
     )
     response.raise_for_status()
@@ -114,6 +115,7 @@ def create_page(title: str, content: str, status: str = "draft", featured_media:
         get_api_url("pages"),
         auth=get_auth(),
         headers=get_headers(),
+        params={"_wp_auth": get_headers()["X-WP-Auth"]},
         json=payload,
     )
     response.raise_for_status()
@@ -169,6 +171,7 @@ def upload_media(file_path: str) -> dict:
         get_api_url("media"),
         auth=get_auth(),
         headers=headers,
+        params={"_wp_auth": get_headers()["X-WP-Auth"]},
         data=data,
     )
     response.raise_for_status()
