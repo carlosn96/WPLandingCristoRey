@@ -8,8 +8,6 @@ $new_pass = WP_Application_Passwords::create_new_application_password($user_id, 
 if (is_wp_error($new_pass)) {
     echo "Error creando password: " . $new_pass->get_error_message();
 } else {
-    // El password real está en el segundo elemento del array retornado (password plano)
-    // El primero es la info del password (item)
-    echo "NUEVO_PASSWORD:" . $new_pass[1];
+    echo "NUEVO_PASSWORD_DUMP: " . json_encode($new_pass);
 }
 ?>
