@@ -94,10 +94,10 @@
     }
 
     /* ------------------------------------------------------------------
-     * 4. Sticky Header State
+     * 4. Premium Sticky Header & Mobile Menu
      * ----------------------------------------------------------------*/
     function initStickyHeader() {
-        const header = document.querySelector('.is-sticky-header');
+        const header = document.querySelector('.cr-premium-header');
         if (!header) return;
 
         const sentinel = document.createElement('div');
@@ -113,6 +113,36 @@
         }, { rootMargin: '-1px 0px 0px 0px', threshold: [1] });
 
         observer.observe(sentinel);
+    }
+
+    function initMobileMenu() {
+        const toggleBtn = document.querySelector('.cr-mobile-toggle');
+        const overlay = document.querySelector('.cr-mobile-overlay');
+        const body = document.body;
+
+        if (!toggleBtn || !overlay) return;
+
+        toggleBtn.addEventListener('click', () => {
+            const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+
+            toggleBtn.setAttribute('aria-expanded', !isExpanded);
+            overlay.classList.toggle('is-active', !isExpanded);
+            overlay.setAttribute('aria-hidden', isExpanded);
+
+            // Prevent scrolling on body when menu is open
+            body.style.overflow = !isExpanded ? 'hidden' : '';
+        });
+
+        // Close menu when a link is clicked
+        const links = overlay.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                toggleBtn.setAttribute('aria-expanded', 'false');
+                overlay.classList.remove('is-active');
+                overlay.setAttribute('aria-hidden', 'true');
+                body.style.overflow = '';
+            });
+        });
     }
 
     /* ------------------------------------------------------------------
@@ -198,6 +228,7 @@
         initColorBlocks();
         initParallax();
         initStickyHeader();
+        initMobileMenu();
         initMicroMoments();
         initCursorAdaptive();
     });

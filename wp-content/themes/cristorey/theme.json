@@ -781,9 +781,9 @@
 			"heading": {
 				"css": "&.has-background { padding: 0; }",
 				"typography": {
-					"fontFamily": "var(--wp--preset--font-family--cinzel-decorative)",
-					"fontWeight": "400",
-					"letterSpacing": "0",
+					"fontFamily": "var(--wp--preset--font-family--poppins)",
+					"fontWeight": "600",
+					"letterSpacing": "-0.01em",
 					"lineHeight": "1.2"
 				}
 			},
