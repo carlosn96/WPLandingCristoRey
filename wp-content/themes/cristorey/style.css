@@ -47,7 +47,6 @@ body {
         box-shadow 0.4s var(--cr-ease),
         background-color 0.4s var(--cr-ease);
     position: relative;
-    overflow: hidden;
     box-shadow:
         3px 3px 8px rgba(11, 29, 55, 0.08),
         -2px -2px 6px rgba(255, 255, 255, 0.6);
@@ -68,6 +67,22 @@ body {
         inset 2px 2px 5px rgba(11, 29, 55, 0.1),
         inset -1px -1px 3px rgba(255, 255, 255, 0.4);
     transition-duration: 0.1s;
+}
+
+/* Ensure button groups and their parent containers don't clip hover effects */
+.wp-block-buttons,
+.wp-block-buttons .wp-block-button {
+    overflow: visible !important;
+}
+
+/* Hero and section containers — allow button hover to breathe */
+.hero-video-container,
+.hero-content,
+.bento-item,
+.bento-item>*,
+.service-card,
+.service-card>* {
+    overflow: visible !important;
 }
 
 /* Sticky Header */
@@ -96,7 +111,8 @@ body {
 
 /* ====== Mask Reveal (Clip-Path Choreography) ====== */
 .reveal-mask {
-    clip-path: inset(100% 0 0 0);
+    /* Negative inset allows child shadows and hover effects to overflow the clip boundary */
+    clip-path: inset(100% -20px -20px -20px);
     opacity: 0;
     transition: clip-path 1s var(--cr-ease),
         opacity 0.6s var(--cr-ease);
@@ -104,7 +120,8 @@ body {
 }
 
 .reveal-mask.active {
-    clip-path: inset(0 0 0 0);
+    /* -20px padding on all sides lets hover box-shadows and translateY show unclipped */
+    clip-path: inset(-20px -20px -20px -20px);
     opacity: 1;
 }
 
@@ -114,7 +131,7 @@ body {
 }
 
 .reveal-mask--left.active {
-    clip-path: inset(0 0 0 0);
+    clip-path: inset(-20px -20px -20px -20px);
 }
 
 /* Mask from right */
@@ -123,7 +140,7 @@ body {
 }
 
 .reveal-mask--right.active {
-    clip-path: inset(0 0 0 0);
+    clip-path: inset(-20px -20px -20px -20px);
 }
 
 /* ====== PREMIUM HEADER SYSTEM ====== */
