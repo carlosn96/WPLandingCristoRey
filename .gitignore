@@ -42,8 +42,8 @@ wp-content/themes/*
 # 3. Custom Plugins (añade tu plugin personalizado aquí)
 !wp-content/plugins/
 wp-content/plugins/*
+!wp-content/plugins/verbum-image-manager/
 # Ejemplo para incluir tu plugin:
-# !wp-content/plugins/mi-helper-ia/
 # !wp-content/plugins/mi-helper-ia/**
 
 # ===========================================
@@ -58,3 +58,11 @@ wp-content/themes/cristorey/node_modules/
 *.log
 .vscode/
 .idea/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/

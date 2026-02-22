@@ -48,6 +48,8 @@ def publicar_ejemplo():
         print(f"🔗 Revisa el borrador con ID: {resultado['id']}")
     except Exception as e:
         print(f"\n❌ Error al crear el post: {e}")
+        if hasattr(e, 'response') and e.response is not None:
+            print("Detalle:", e.response.text)
         if "401" in str(e):
             print("💡 Tip: Si estás en localhost, recuerda que WordPress requiere HTTPS para Application Passwords por defecto.")
 

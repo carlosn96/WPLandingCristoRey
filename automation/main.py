@@ -16,6 +16,8 @@ import sys
 import json
 import requests
 import mimetypes
+import re
+import unicodedata
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -43,7 +45,7 @@ def get_headers():
     user_pass = f"{WP_USER}:{WP_APP_PASSWORD}"
     encoded_u_p = base64.b64encode(user_pass.encode()).decode()
     return {
-        "X-WP-Auth": f"Basic {encoded_u_p}",
+        "Authorization": f"Basic {encoded_u_p}",
         "Content-Type": "application/json"
     }
 
@@ -56,7 +58,23 @@ def get_api_url(endpoint: str) -> str:
     return f"{WP_URL}/wp-json/wp/v2/{endpoint}"
 
 
-def create_post(title: str, content: str, status: str = "draft", featured_media: int = None) -> dict:
+def generate_slug(text: str) -> str:
+    """
+    Genera un slug amigable para URLs a partir de un texto.
+    (Ej: "Hola Mundo!" -> "hola-mundo")
+    """
+    text = str(text)
+    # Normalizar caracteres (quitar acentos, etc)
+    text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode('ascii')
+    # Convertir a minúsculas
+    text = text.lower()
+    # Reemplazar espacios y caracteres no alfanuméricos por guiones
+    text = re.sub(r'[^a-z0-9]+', '-', text)
+    # Limpiar guiones iniciales o finales
+    return text.strip('-')
+
+
+def create_post(title: str, content: str, status: str = "draft", featured_media: int = None, slug: str = None, categories: list = None, template: str = None, meta: dict = None, excerpt: str = None) -> dict:
     """
     Crea un nuevo post en WordPress.
 
@@ -65,6 +83,11 @@ def create_post(title: str, content: str, status: str = "draft", featured_media:
         content: Contenido HTML del post
         status: 'draft', 'publish', o 'pending' (default: 'draft')
         featured_media: ID del medio a usar como imagen destacada (opcional)
+        slug: Slug personalizado (opcional, se auto-genera si no se provee)
+        categories: Lista de IDs de categorías a las que asignar el post (opcional)
+        template: Nombre del template a asignar (ej. 'single-post-verbum-domini')
+        meta: Diccionario de metadatos (post_meta)
+        excerpt: Resumen del post
 
     Returns:
         dict con la respuesta de la API
@@ -73,24 +96,46 @@ def create_post(title: str, content: str, status: str = "draft", featured_media:
         "title": title,
         "content": content,
         "status": status,
+        "slug": slug if slug else generate_slug(title)
     }
     if featured_media:
         payload["featured_media"] = featured_media
+    if categories:
+        payload["categories"] = categories
+    if template:
+        payload["template"] = template
+    if meta:
+        payload["meta"] = meta
+    if excerpt:
+        payload["excerpt"] = excerpt
 
     response = requests.post(
         get_api_url("posts"),
-        auth=get_auth(),
         headers=get_headers(),
-        params={"_wp_auth": get_headers()["X-WP-Auth"]},
         json=payload,
     )
     response.raise_for_status()
     data = response.json()
-    print(f"✅ Post creado: '{data['title']['rendered']}' (ID: {data['id']}, Estado: {data['status']})")
+    print(f"✅ Post creado: '{data['title']['rendered']}' (ID: {data['id']}, URL: {data.get('link', 'N/A')})")
     return data
 
 
-def create_page(title: str, content: str, status: str = "draft", featured_media: int = None) -> dict:
+def update_post(post_id: int, payload: dict) -> dict:
+    """
+    Actualiza un post existente.
+    """
+    response = requests.post(
+        get_api_url(f"posts/{post_id}"),
+        headers=get_headers(),
+        json=payload,
+    )
+    response.raise_for_status()
+    data = response.json()
+    print(f"✅ Post {post_id} actualizado.")
+    return data
+
+
+def create_page(title: str, content: str, status: str = "draft", featured_media: int = None, slug: str = None) -> dict:
     """
     Crea una nueva página en WordPress.
 
@@ -99,6 +144,7 @@ def create_page(title: str, content: str, status: str = "draft", featured_media:
         content: Contenido HTML de la página
         status: 'draft', 'publish', o 'pending' (default: 'draft')
         featured_media: ID del medio a usar como imagen destacada (opcional)
+        slug: Slug personalizado (opcional, se auto-genera si no se provee)
 
     Returns:
         dict con la respuesta de la API
@@ -107,20 +153,19 @@ def create_page(title: str, content: str, status: str = "draft", featured_media:
         "title": title,
         "content": content,
         "status": status,
+        "slug": slug if slug else generate_slug(title)
     }
     if featured_media:
         payload["featured_media"] = featured_media
 
     response = requests.post(
         get_api_url("pages"),
-        auth=get_auth(),
         headers=get_headers(),
-        params={"_wp_auth": get_headers()["X-WP-Auth"]},
         json=payload,
     )
     response.raise_for_status()
     data = response.json()
-    print(f"✅ Página creada: '{data['title']['rendered']}' (ID: {data['id']}, Estado: {data['status']})")
+    print(f"✅ Página creada: '{data['title']['rendered']}' (ID: {data['id']}, URL: {data.get('link', 'N/A')})")
     return data
 
 
@@ -169,9 +214,7 @@ def upload_media(file_path: str) -> dict:
 
     response = requests.post(
         get_api_url("media"),
-        auth=get_auth(),
         headers=headers,
-        params={"_wp_auth": get_headers()["X-WP-Auth"]},
         data=data,
     )
     response.raise_for_status()
