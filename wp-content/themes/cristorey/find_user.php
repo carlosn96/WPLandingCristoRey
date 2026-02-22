@@ -2,9 +2,15 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-$load_path = '../../../wp-load.php';
+$load_path = '../../../../wp-load.php';
 if (!file_exists($load_path)) {
-    die("Error: wp-load.php not found at $load_path. Current dir: " . __DIR__);
+    // Try even higher or elsewhere? 
+    // Let's also check if it's in the current deploy-src root (unlikely if it's just the theme repo)
+    $load_path = '../../../wp-load.php';
+}
+
+if (!file_exists($load_path)) {
+    die("Error: wp-load.php not found. Current dir: " . __DIR__ . "\nContents of ../../../../: " . json_encode(scandir('../../../../')));
 }
 require_once($load_path);
 
