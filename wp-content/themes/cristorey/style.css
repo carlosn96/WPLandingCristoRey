@@ -1118,7 +1118,6 @@ footer .wp-block-list li {
     height: 36px;
     pointer-events: none;
     z-index: 99999;
-    mix-blend-mode: difference;
     transition: width 0.4s var(--cr-ease), height 0.4s var(--cr-ease);
 }
 

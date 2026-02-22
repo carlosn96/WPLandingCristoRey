@@ -185,8 +185,9 @@
         });
 
         function animateCursor() {
-            cursorX += (mouseX - cursorX) * 0.15;
-            cursorY += (mouseY - cursorY) * 0.15;
+            // Fast tracking to eliminate lag/desfase
+            cursorX += (mouseX - cursorX) * 0.4;
+            cursorY += (mouseY - cursorY) * 0.4;
             cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
             requestAnimationFrame(animateCursor);
         }
