@@ -1017,3 +1017,25 @@ footer .wp-block-list li {
 [data-bg-color] {
     transition: background-color 0.8s var(--cr-ease);
 }
+
+/* =========================================
+   Performance Optimizations
+   ========================================= */
+
+/* content-visibility for below-fold sections */
+.wp-block-group.alignfull:nth-child(n+3) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+}
+
+/* GPU acceleration hints for animating elements */
+.reveal-mask,
+.bento-item,
+.cr-cursor {
+    will-change: auto;
+}
+
+.reveal-mask.active,
+.bento-item:hover {
+    will-change: transform, opacity;
+}
