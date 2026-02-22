@@ -126,6 +126,136 @@ body {
     clip-path: inset(0 0 0 0);
 }
 
+/* ====== PRO HEADER SYSTEM ====== */
+
+/* Brand Group */
+.cr-header__brand {
+    min-width: 0;
+}
+
+.cr-header__logo img {
+    transition: transform 0.4s var(--cr-ease);
+}
+
+.cr-header__brand:hover .cr-header__logo img {
+    transform: scale(1.06);
+}
+
+.cr-header__title a {
+    text-decoration: none !important;
+}
+
+.cr-header__subtitle {
+    margin: 0 !important;
+    opacity: 0.7;
+    transition: opacity 0.4s var(--cr-ease);
+}
+
+.cr-header__brand:hover .cr-header__subtitle {
+    opacity: 1;
+}
+
+/* Nav Items — Animated Gold Underline */
+.cr-nav-item .wp-block-navigation-item__content {
+    position: relative;
+    text-decoration: none !important;
+    padding: 4px 0;
+}
+
+.cr-nav-item .wp-block-navigation-item__content::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--wp--preset--color--theme-3);
+    transition: width 0.4s var(--cr-ease), left 0.4s var(--cr-ease);
+}
+
+.cr-nav-item .wp-block-navigation-item__content:hover::after,
+.cr-nav-item.current-menu-item .wp-block-navigation-item__content::after {
+    width: 100%;
+    left: 0;
+}
+
+.cr-nav-item .wp-block-navigation-item__label {
+    transition: color 0.3s var(--cr-ease);
+}
+
+.cr-nav-item .wp-block-navigation-item__content:hover .wp-block-navigation-item__label {
+    color: var(--wp--preset--color--theme-3);
+}
+
+/* Header CTA Buttons — Pill Style */
+.header-cta-buttons {
+    margin-left: 20px;
+}
+
+.cr-cta-primary .wp-block-button__link,
+.cr-cta-accent .wp-block-button__link {
+    box-shadow: none !important;
+    transition: transform 0.4s var(--cr-ease),
+        box-shadow 0.4s var(--cr-ease),
+        background-color 0.3s var(--cr-ease) !important;
+}
+
+.cr-cta-primary .wp-block-button__link:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 14px rgba(11, 29, 55, 0.2) !important;
+}
+
+.cr-cta-accent .wp-block-button__link:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 14px rgba(212, 175, 55, 0.3) !important;
+}
+
+/* Sticky Header — Enhanced Glassmorphism */
+.is-sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--wp--preset--color--theme-1);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+    transition: all 0.5s var(--cr-ease);
+}
+
+.is-sticky-header.scrolled {
+    padding-top: var(--wp--preset--spacing--10) !important;
+    padding-bottom: var(--wp--preset--spacing--10) !important;
+    background-color: rgba(240, 238, 233, 0.88);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    box-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.06),
+        0 4px 24px rgba(11, 29, 55, 0.06);
+}
+
+.is-sticky-header.scrolled .cr-header__logo img {
+    transform: scale(0.9);
+}
+
+.is-sticky-header.scrolled .cr-header__subtitle {
+    opacity: 0;
+    font-size: 0 !important;
+    transition: opacity 0.3s var(--cr-ease), font-size 0.3s var(--cr-ease);
+}
+
+/* Mobile Responsive */
+@media (max-width: 782px) {
+    .header-cta-buttons {
+        display: none;
+    }
+
+    .cr-header__subtitle {
+        display: none;
+    }
+
+    .cr-header__title a {
+        font-size: 16px !important;
+    }
+}
+
 /* Forms: Thumb-friendly */
 input:not([type=submit]):not([type=checkbox]):not([type=radio]):not([type=range]),
 textarea {
@@ -644,6 +774,7 @@ footer .wp-block-list li {
 
 /* 3. Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -726,14 +857,37 @@ footer .wp-block-list li {
 }
 
 /* 7. Staggered Reveals (8 levels) */
-.reveal-delay-1 { transition-delay: 80ms; }
-.reveal-delay-2 { transition-delay: 160ms; }
-.reveal-delay-3 { transition-delay: 240ms; }
-.reveal-delay-4 { transition-delay: 320ms; }
-.reveal-delay-5 { transition-delay: 400ms; }
-.reveal-delay-6 { transition-delay: 480ms; }
-.reveal-delay-7 { transition-delay: 560ms; }
-.reveal-delay-8 { transition-delay: 640ms; }
+.reveal-delay-1 {
+    transition-delay: 80ms;
+}
+
+.reveal-delay-2 {
+    transition-delay: 160ms;
+}
+
+.reveal-delay-3 {
+    transition-delay: 240ms;
+}
+
+.reveal-delay-4 {
+    transition-delay: 320ms;
+}
+
+.reveal-delay-5 {
+    transition-delay: 400ms;
+}
+
+.reveal-delay-6 {
+    transition-delay: 480ms;
+}
+
+.reveal-delay-7 {
+    transition-delay: 560ms;
+}
+
+.reveal-delay-8 {
+    transition-delay: 640ms;
+}
 
 /* =========================================
    Bento Grid 2.0 — Modular Boxes
@@ -776,6 +930,7 @@ footer .wp-block-list li {
 }
 
 @media (max-width: 768px) {
+
     .bento-item--wide,
     .bento-item--tall {
         grid-column: span 1;
@@ -792,9 +947,17 @@ footer .wp-block-list li {
     transform-style: preserve-3d;
 }
 
-.depth-layer-1 { transform: translateZ(10px); }
-.depth-layer-2 { transform: translateZ(25px); }
-.depth-layer-3 { transform: translateZ(50px); }
+.depth-layer-1 {
+    transform: translateZ(10px);
+}
+
+.depth-layer-2 {
+    transform: translateZ(25px);
+}
+
+.depth-layer-3 {
+    transform: translateZ(50px);
+}
 
 /* =========================================
    Adaptive Cursor
@@ -842,7 +1005,9 @@ footer .wp-block-list li {
 
 /* Hide custom cursor on touch devices */
 @media (hover: none) {
-    .cr-cursor { display: none; }
+    .cr-cursor {
+        display: none;
+    }
 }
 
 /* =========================================
