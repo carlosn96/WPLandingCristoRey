@@ -167,60 +167,6 @@
     }
 
     /* ------------------------------------------------------------------
-     * 6. Cursor Adaptive (Optional — Desktop Only)
-     * ----------------------------------------------------------------*/
-    function initCursorAdaptive() {
-        if (prefersReducedMotion || 'ontouchstart' in window) return;
-
-        const cursor = document.createElement('div');
-        cursor.className = 'cr-cursor';
-        cursor.innerHTML = '<div class="cr-cursor__dot"></div>';
-        document.body.appendChild(cursor);
-
-        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function animateCursor() {
-            // Fast tracking to eliminate lag/desfase
-            cursorX += (mouseX - cursorX) * 0.4;
-            cursorY += (mouseY - cursorY) * 0.4;
-            cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        // Context-aware scaling
-        document.addEventListener('mouseover', (e) => {
-            const target = e.target.closest('a, button, .wp-element-button, .wp-block-button__link, .service-card, .bento-item');
-            if (target) {
-                cursor.classList.add('cr-cursor--expanded');
-            }
-        });
-
-        document.addEventListener('mouseout', (e) => {
-            const target = e.target.closest('a, button, .wp-element-button, .wp-block-button__link, .service-card, .bento-item');
-            if (target) {
-                cursor.classList.remove('cr-cursor--expanded');
-            }
-        });
-
-        // Expand on images
-        document.addEventListener('mouseover', (e) => {
-            if (e.target.closest('img, video, .wp-block-image, .wp-block-cover')) {
-                cursor.classList.add('cr-cursor--media');
-            }
-        });
-        document.addEventListener('mouseout', (e) => {
-            if (e.target.closest('img, video, .wp-block-image, .wp-block-cover')) {
-                cursor.classList.remove('cr-cursor--media');
-            }
-        });
-    }
-
     /* ------------------------------------------------------------------
      * Boot
      * ----------------------------------------------------------------*/
@@ -231,7 +177,6 @@
         initStickyHeader();
         initMobileMenu();
         initMicroMoments();
-        initCursorAdaptive();
     });
 
 })();
