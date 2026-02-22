@@ -10,5 +10,7 @@ foreach ($matches[1] as $index => $key) {
     }
 }
 
+header('Content-Type: application/json');
 echo json_encode($salts, JSON_PRETTY_PRINT);
+exit;
 ?>
