@@ -3,125 +3,277 @@
  * Title: Soy Nuevo (I'm New)
  * Slug: cristorey/page-soy-nuevo
  * Categories: featured, text
- * Description: Welcome page with mask reveals, Bento Grid steps, and cinematic CTA.
+ * Description: Premium Plus welcome page with soft floating cards, 3-step guide, and cinematic aesthetic.
  */
 ?>
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"}}},"backgroundColor":"theme-1","layout":{"type":"constrained","contentSize":"680px"}} -->
-<div class="wp-block-group alignfull has-theme-1-background-color has-background"
-    style="padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80)">
-    <!-- wp:heading {"textAlign":"center","level":1,"className":"reveal-mask","style":{"typography":{"textTransform":"uppercase","letterSpacing":"4px","fontWeight":"400"}},"textColor":"theme-2","fontSize":"x-large"} -->
-    <h1 class="wp-block-heading has-text-align-center reveal-mask has-theme-2-color has-text-color has-x-large-font-size"
-        style="font-weight:400;text-transform:uppercase;letter-spacing:4px">Bienvenido</h1>
-    <!-- /wp:heading -->
+<!-- wp:html -->
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Manrope:wght@300;400;500;600&display=swap');
 
-    <!-- wp:paragraph {"align":"center","className":"reveal-mask reveal-delay-1","style":{"typography":{"fontSize":"1.15rem","lineHeight":"1.9","fontWeight":"300"},"spacing":{"margin":{"bottom":"40px"}}},"textColor":"theme-5"} -->
-    <p class="has-text-align-center reveal-mask reveal-delay-1 has-theme-5-color has-text-color"
-        style="margin-bottom:40px;font-size:1.15rem;line-height:1.9;font-weight:300">Nos alegra que estés aquí. Ya sea
-        que estés
-        buscando una comunidad de fe, visitando por primera vez o regresando después de un tiempo, hay un lugar para ti.
-    </p>
-    <!-- /wp:paragraph -->
-</div>
-<!-- /wp:group -->
+    .sn-premium {
+        --sn-bg: #FCFAF7;
+        /* Warm off-white */
+        --sn-bg-alt: #FFFFFF;
+        --sn-text: #1C1917;
+        /* Deep Charcoal */
+        --sn-text-muted: rgba(28, 25, 23, 0.7);
+        --sn-gold: #D29035;
+        /* Soft Gold */
+        --sn-gold-light: rgba(210, 144, 53, 0.1);
+        --sn-border: rgba(28, 25, 23, 0.08);
+        background-color: var(--sn-bg);
+        color: var(--sn-text);
+        font-family: 'Manrope', sans-serif;
+        overflow: hidden;
+    }
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}},"color":{"background":"#f7f5f1"}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-background"
-    style="background-color:#f7f5f1;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)">
-    <!-- wp:heading {"textAlign":"center","level":2,"className":"reveal-mask","style":{"typography":{"textTransform":"uppercase","letterSpacing":"3px","fontWeight":"400","fontSize":"1.2rem"},"spacing":{"margin":{"bottom":"40px"}}},"textColor":"theme-2"} -->
-    <h2 class="wp-block-heading has-text-align-center reveal-mask has-theme-2-color has-text-color"
-        style="margin-bottom:40px;font-size:1.2rem;font-weight:400;text-transform:uppercase;letter-spacing:3px">¿Qué
-        Esperar?</h2>
-    <!-- /wp:heading -->
+    .sn-premium *,
+    .sn-premium *::before,
+    .sn-premium *::after {
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+    }
 
-    <!-- Bento Grid Steps -->
-    <!-- wp:group {"align":"wide","className":"bento-grid","layout":{"type":"default"}} -->
-    <div class="wp-block-group alignwide bento-grid">
+    /* Hero Section */
+    .sn-hero {
+        position: relative;
+        padding: clamp(6rem, 15vh, 10rem) clamp(1.5rem, 5vw, 4rem);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: var(--sn-bg);
+        border-bottom: 1px solid var(--sn-border);
+    }
 
-        <!-- Step 1: Llegada -->
-        <!-- wp:group {"className":"bento-item reveal-mask reveal-delay-1","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}}} -->
-        <div class="wp-block-group bento-item reveal-mask reveal-delay-1"
-            style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
-            <!-- wp:heading {"textAlign":"center","level":3,"style":{"typography":{"fontSize":"1.15rem","fontWeight":"600"}},"textColor":"theme-2"} -->
-            <h3 class="wp-block-heading has-text-align-center has-theme-2-color has-text-color"
-                style="font-size:1.15rem;font-weight:600">Llegada</h3>
-            <!-- /wp:heading -->
-            <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"0.9rem","fontWeight":"300","lineHeight":"1.7"}},"textColor":"theme-5"} -->
-            <p class="has-text-align-center has-theme-5-color has-text-color"
-                style="font-size:0.9rem;font-weight:300;line-height:1.7">Ven como estés.
-                Tenemos estacionamiento disponible y personas que te darán la bienvenida en la entrada.</p>
-            <!-- /wp:paragraph -->
+    .sn-hero-bg {
+        position: absolute;
+        inset: 0;
+        /* Soft community/church door placeholder */
+        background-image: url('https://images.unsplash.com/photo-1548625361-ecacbdbe2275?q=80&w=2938&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.04;
+        filter: sepia(30%) hue-rotate(5deg);
+        z-index: 0;
+    }
+
+    .sn-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 760px;
+    }
+
+    .sn-eyebrow {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--sn-gold);
+        margin-bottom: 1.5rem;
+    }
+
+    .sn-title {
+        font-family: 'Cinzel', serif;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 600;
+        line-height: 1.1;
+        margin: 0 0 1.5rem;
+        color: var(--sn-text);
+    }
+
+    .sn-subtitle {
+        font-size: clamp(1.1rem, 2vw, 1.35rem);
+        font-weight: 300;
+        line-height: 1.8;
+        color: var(--sn-text-muted);
+    }
+
+    /* Steps Section */
+    .sn-steps {
+        padding: clamp(4rem, 10vh, 8rem) clamp(1.5rem, 5vw, 4rem);
+        background: #F4F1ED;
+    }
+
+    .sn-section-header {
+        text-align: center;
+        margin-bottom: 5rem;
+    }
+
+    .sn-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .sn-card {
+        background: var(--sn-bg-alt);
+        border: 1px solid var(--sn-border);
+        border-radius: 12px;
+        padding: 3.5rem 2.5rem;
+        text-align: center;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sn-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 24px 48px rgba(28, 25, 23, 0.08);
+        border-color: rgba(210, 144, 53, 0.3);
+    }
+
+    .sn-card-step {
+        position: absolute;
+        top: -20px;
+        right: -10px;
+        font-family: 'Cinzel', serif;
+        font-size: 8rem;
+        font-weight: 700;
+        color: var(--sn-gold-light);
+        line-height: 1;
+        z-index: 0;
+    }
+
+    .sn-card-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .sn-card-icon {
+        font-size: 2.5rem;
+        color: var(--sn-gold);
+        margin-bottom: 1.5rem;
+    }
+
+    .sn-card-title {
+        font-family: 'Cinzel', serif;
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--sn-text);
+    }
+
+    .sn-card-desc {
+        font-size: 1rem;
+        color: var(--sn-text-muted);
+        line-height: 1.7;
+    }
+
+    /* CTA Section */
+    .sn-cta {
+        padding: clamp(5rem, 12vh, 10rem) clamp(1.5rem, 5vw, 4rem);
+        background: var(--sn-text);
+        color: var(--sn-bg);
+        text-align: center;
+        position: relative;
+    }
+
+    .sn-cta-title {
+        color: var(--sn-bg);
+    }
+
+    .sn-cta-desc {
+        color: rgba(252, 250, 247, 0.7);
+    }
+
+    .sn-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 2.5rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.4s ease;
+        margin-top: 2rem;
+    }
+
+    .sn-btn-primary {
+        background: var(--sn-gold);
+        color: var(--sn-text);
+    }
+
+    .sn-btn-primary:hover {
+        background: #e6a545;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(210, 144, 53, 0.2);
+    }
+</style>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<div class="sn-premium">
+    <!-- Hero Section -->
+    <section class="sn-hero">
+        <div class="sn-hero-bg"></div>
+        <div class="sn-hero-content">
+            <div class="sn-eyebrow">Bienvenido a Cristo Rey</div>
+            <h1 class="sn-title">Te Estábamos Esperando</h1>
+            <p class="sn-subtitle">Nos alegra que estés aquí. Ya sea que busques una comunidad de fe, estés de visita
+                por primera vez o regreses después de un tiempo, hay un lugar especial para ti.</p>
         </div>
-        <!-- /wp:group -->
+    </section>
 
-        <!-- Step 2: Celebración -->
-        <!-- wp:group {"className":"bento-item reveal-mask reveal-delay-2","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}}} -->
-        <div class="wp-block-group bento-item reveal-mask reveal-delay-2"
-            style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
-            <!-- wp:heading {"textAlign":"center","level":3,"style":{"typography":{"fontSize":"1.15rem","fontWeight":"600"}},"textColor":"theme-2"} -->
-            <h3 class="wp-block-heading has-text-align-center has-theme-2-color has-text-color"
-                style="font-size:1.15rem;font-weight:600">Celebración</h3>
-            <!-- /wp:heading -->
-            <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"0.9rem","fontWeight":"300","lineHeight":"1.7"}},"textColor":"theme-5"} -->
-            <p class="has-text-align-center has-theme-5-color has-text-color"
-                style="font-size:0.9rem;font-weight:300;line-height:1.7">La misa dura
-                aproximadamente 1 hora. Puedes seguir en los misales disponibles en cada banca.</p>
-            <!-- /wp:paragraph -->
+    <!-- 3-Step Guide Section -->
+    <section class="sn-steps">
+        <div class="sn-section-header">
+            <h2 class="sn-title" style="font-size: clamp(2rem, 4vw, 3rem);">¿Qué Esperar?</h2>
+            <p class="sn-subtitle">Una guía sencilla para tu primera visita.</p>
         </div>
-        <!-- /wp:group -->
 
-        <!-- Step 3: Comunidad -->
-        <!-- wp:group {"className":"bento-item reveal-mask reveal-delay-3","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}}} -->
-        <div class="wp-block-group bento-item reveal-mask reveal-delay-3"
-            style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
-            <!-- wp:heading {"textAlign":"center","level":3,"style":{"typography":{"fontSize":"1.15rem","fontWeight":"600"}},"textColor":"theme-2"} -->
-            <h3 class="wp-block-heading has-text-align-center has-theme-2-color has-text-color"
-                style="font-size:1.15rem;font-weight:600">Comunidad</h3>
-            <!-- /wp:heading -->
-            <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"0.9rem","fontWeight":"300","lineHeight":"1.7"}},"textColor":"theme-5"} -->
-            <p class="has-text-align-center has-theme-5-color has-text-color"
-                style="font-size:0.9rem;font-weight:300;line-height:1.7">Después de misa
-                te invitamos a un café. Es la mejor manera de conocer a la comunidad.</p>
-            <!-- /wp:paragraph -->
-        </div>
-        <!-- /wp:group -->
-
-    </div>
-    <!-- /wp:group -->
-</div>
-<!-- /wp:group -->
-
-<!-- Cinematic CTA -->
-<!-- wp:cover {"dimRatio":80,"overlayColor":"theme-2","minHeight":400,"minHeightUnit":"px","align":"full","className":"reveal-mask"} -->
-<div class="wp-block-cover alignfull reveal-mask" style="min-height:400px">
-    <span aria-hidden="true"
-        class="wp-block-cover__background has-theme-2-background-color has-background-dim-80 has-background-dim"></span>
-    <div class="wp-block-cover__inner-container">
-        <!-- wp:group {"layout":{"type":"constrained","contentSize":"540px"}} -->
-        <div class="wp-block-group">
-            <!-- wp:heading {"textAlign":"center","level":2,"className":"reveal-mask reveal-delay-1","style":{"typography":{"textTransform":"uppercase","letterSpacing":"3px","fontWeight":"400"}},"textColor":"theme-3","fontSize":"large"} -->
-            <h2 class="wp-block-heading has-text-align-center reveal-mask reveal-delay-1 has-theme-3-color has-text-color has-large-font-size"
-                style="font-weight:400;text-transform:uppercase;letter-spacing:3px">Da el Siguiente Paso</h2>
-            <!-- /wp:heading -->
-
-            <!-- wp:paragraph {"align":"center","className":"reveal-mask reveal-delay-2","style":{"typography":{"fontSize":"1rem","lineHeight":"1.8","fontWeight":"300"}},"textColor":"theme-4"} -->
-            <p class="has-text-align-center reveal-mask reveal-delay-2 has-theme-4-color has-text-color"
-                style="font-size:1rem;line-height:1.8;font-weight:300">Si
-                deseas registrarte como miembro o tienes preguntas, estamos aquí para ayudarte.</p>
-            <!-- /wp:paragraph -->
-
-            <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"className":"reveal-mask reveal-delay-3","style":{"spacing":{"margin":{"top":"28px"}}}} -->
-            <div class="wp-block-buttons reveal-mask reveal-delay-3" style="margin-top:28px">
-                <!-- wp:button {"backgroundColor":"theme-3","textColor":"theme-2","className":"is-style-fill","style":{"border":{"radius":"100px"},"spacing":{"padding":{"top":"14px","bottom":"14px","left":"32px","right":"32px"}}}} -->
-                <div class="wp-block-button is-style-fill"><a
-                        class="wp-block-button__link has-theme-2-color has-theme-3-background-color has-text-color has-background wp-element-button"
-                        href="<?php echo esc_url(home_url('/contacto/')); ?>"
-                        style="border-radius:100px;padding-top:14px;padding-right:32px;padding-bottom:14px;padding-left:32px">Contáctanos</a>
+        <div class="sn-cards">
+            <!-- Step 1 -->
+            <div class="sn-card">
+                <div class="sn-card-step">1</div>
+                <div class="sn-card-content">
+                    <div class="sn-card-icon">📍</div>
+                    <h3 class="sn-card-title">Llegada</h3>
+                    <p class="sn-card-desc">Ven como estés. Contamos con estacionamiento amplio y personas en la entrada
+                        dispuestas a recibirte y orientarte con una sonrisa.</p>
                 </div>
-                <!-- /wp:button -->
             </div>
-            <!-- /wp:buttons -->
+
+            <!-- Step 2 -->
+            <div class="sn-card">
+                <div class="sn-card-step">2</div>
+                <div class="sn-card-content">
+                    <div class="sn-card-icon">📖</div>
+                    <h3 class="sn-card-title">Celebración</h3>
+                    <p class="sn-card-desc">Nuestras misas duran alrededor de 60 minutos. Puedes seguir las lecturas en
+                        los misales disponibles en cada banca para vivir la liturgia.</p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="sn-card">
+                <div class="sn-card-step">3</div>
+                <div class="sn-card-content">
+                    <div class="sn-card-icon">☕</div>
+                    <h3 class="sn-card-title">Comunidad</h3>
+                    <p class="sn-card-desc">Al terminar la celebración, te invitamos a compartir un café. Es el momento
+                        perfecto para conversar, relajarte y conocer a la familia de Cristo Rey.</p>
+                </div>
+            </div>
         </div>
-        <!-- /wp:group -->
-    </div>
+    </section>
+
+    <!-- Cinematic CTA -->
+    <section class="sn-cta">
+        <div class="sn-hero-content" style="margin: 0 auto;">
+            <div class="sn-eyebrow" style="color: rgba(252, 250, 247, 0.5);">Da el Siguiente Paso</div>
+            <h2 class="sn-title sn-cta-title" style="font-size: clamp(2.2rem, 5vw, 3.5rem);">Comienza Tu Camino Aquí
+            </h2>
+            <p class="sn-subtitle sn-cta-desc">Inscríbete como miembro, solicita información sobre sacramentos o
+                simplemente envíanos tus dudas. Estamos para servirte.</p>
+            <a href="<?php echo esc_url(home_url('/contacto/')); ?>" class="sn-btn sn-btn-primary">Contáctanos</a>
+        </div>
+    </section>
 </div>
-<!-- /wp:cover -->
+<!-- /wp:html -->

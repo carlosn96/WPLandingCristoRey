@@ -3,233 +3,345 @@
  * Title: Home Page Content (The Editorial Layer)
  * Slug: cristorey/home-content
  * Categories: featured, layout
- * Description: Immersive homepage with Bento Grid services, mask reveals, color-block transitions, and cinematic flow.
+ * Description: Premium Plus immersive homepage with dark-mode, bento grid, cinematic hero, and spiritual aesthetic.
  */
 ?>
+<!-- wp:html -->
+<style>
+    /* Reset and Premium Plus variables */
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap');
 
-<!-- Section 1: Welcome — Mask Reveals + Staggered -->
-<!-- wp:group {"align":"full","className":"reveal-mask","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"}}},"backgroundColor":"theme-1","layout":{"type":"constrained","contentSize":"680px"}} -->
-<div class="wp-block-group alignfull reveal-mask has-theme-1-background-color has-background"
-    style="padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80)"
-    data-bg-color="#F0EEE9">
+    .home-premium {
+        --hp-bg: #0e0c09;
+        --hp-bg-alt: #161411;
+        --hp-text: #fcfaf7;
+        --hp-text-muted: rgba(252, 250, 247, 0.6);
+        --hp-gold: #eca413;
+        --hp-gold-muted: rgba(236, 164, 19, 0.2);
+        --hp-border: rgba(236, 164, 19, 0.15);
+        background-color: var(--hp-bg);
+        color: var(--hp-text);
+        font-family: 'Manrope', 'Inter', sans-serif;
+        overflow: hidden;
+        width: 100%;
+    }
 
-    <!-- wp:heading {"textAlign":"center","level":2,"className":"reveal-mask reveal-delay-1","style":{"typography":{"textTransform":"uppercase","letterSpacing":"4px","fontWeight":"400","lineHeight":"1.1"},"spacing":{"margin":{"bottom":"16px"}}},"textColor":"theme-2","fontSize":"x-large"} -->
-    <h2 class="wp-block-heading has-text-align-center reveal-mask reveal-delay-1 has-theme-2-color has-text-color has-x-large-font-size"
-        style="margin-bottom:16px;font-weight:400;text-transform:uppercase;letter-spacing:4px;line-height:1.1">
-        Bienvenido a Casa</h2>
-    <!-- /wp:heading -->
+    .home-premium *,
+    .home-premium *::before,
+    .home-premium *::after {
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+    }
 
-    <!-- wp:separator {"className":"is-style-default reveal-mask reveal-delay-2","style":{"spacing":{"margin":{"top":"0","bottom":"28px"}},"layout":{"selfStretch":"fixed","flexSize":"60px"}}} -->
-    <hr class="wp-block-separator is-style-default reveal-mask reveal-delay-2"
-        style="margin-top:0;margin-bottom:28px" />
-    <!-- /wp:separator -->
+    /* Hero Section */
+    .hp-hero {
+        position: relative;
+        padding: clamp(6rem, 15vh, 12rem) clamp(2rem, 5vw, 4rem);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        min-height: 85vh;
+        border-bottom: 1px solid var(--hp-border);
+        overflow: hidden;
+    }
 
-    <!-- wp:paragraph {"align":"center","className":"reveal-mask reveal-delay-3","style":{"typography":{"fontSize":"1.15rem","lineHeight":"1.9","fontWeight":"300"}},"textColor":"theme-5"} -->
-    <p class="has-text-align-center reveal-mask reveal-delay-3 has-theme-5-color has-text-color"
-        style="font-size:1.15rem;line-height:1.9;font-weight:300">Somos
-        una comunidad católica comprometida con la Espiritualidad de la Comunión y Fraternidad.<br>Te invitamos a
-        caminar juntos en la fe, el servicio y la celebración.</p>
-    <!-- /wp:paragraph -->
+    .hp-hero-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url('https://images.unsplash.com/photo-1548625361-ecacbdbe2275?q=80&w=2938&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.15;
+        z-index: 0;
+        filter: grayscale(80%) sepia(20%) hue-rotate(5deg);
+    }
 
-    <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"className":"reveal-mask reveal-delay-4","style":{"spacing":{"margin":{"top":"36px"}}}} -->
-    <div class="wp-block-buttons reveal-mask reveal-delay-4" style="margin-top:36px">
-        <!-- wp:button {"backgroundColor":"theme-2","textColor":"theme-1","className":"is-style-fill","style":{"border":{"radius":"100px"},"spacing":{"padding":{"top":"14px","bottom":"14px","left":"32px","right":"32px"}}}} -->
-        <div class="wp-block-button is-style-fill"><a
-                class="wp-block-button__link has-theme-1-color has-theme-2-background-color has-text-color has-background wp-element-button"
-                href="<?php echo esc_url(home_url('/soy-nuevo/')); ?>"
-                style="border-radius:100px;padding-top:14px;padding-right:32px;padding-bottom:14px;padding-left:32px">Planifica
-                tu Visita</a>
-        </div>
-        <!-- /wp:button -->
-        <!-- wp:button {"className":"is-style-outline","style":{"border":{"radius":"100px"},"spacing":{"padding":{"top":"14px","bottom":"14px","left":"32px","right":"32px"}}}} -->
-        <div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button"
-                href="<?php echo esc_url(home_url('/horarios/')); ?>"
-                style="border-radius:100px;padding-top:14px;padding-right:32px;padding-bottom:14px;padding-left:32px">Horarios
-                de Misa</a>
-        </div>
-        <!-- /wp:button -->
-    </div>
-    <!-- /wp:buttons -->
-</div>
-<!-- /wp:group -->
+    .hp-hero::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 50%, transparent 0%, var(--hp-bg) 80%);
+        z-index: 1;
+    }
 
-<!-- Section 2: Services — Bento Grid 2.0 -->
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"}},"color":{"background":"#f7f5f1"}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-background"
-    style="background-color:#f7f5f1;padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80)"
-    data-bg-color="#f7f5f1">
+    .hp-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+    }
 
-    <!-- wp:heading {"textAlign":"center","level":2,"className":"reveal-mask","style":{"typography":{"textTransform":"uppercase","letterSpacing":"4px","fontWeight":"400"},"spacing":{"margin":{"bottom":"12px"}}},"textColor":"theme-2","fontSize":"large"} -->
-    <h2 class="wp-block-heading has-text-align-center reveal-mask has-theme-2-color has-text-color has-large-font-size"
-        style="margin-bottom:12px;font-weight:400;text-transform:uppercase;letter-spacing:4px">Nuestros Servicios</h2>
-    <!-- /wp:heading -->
+    .hp-hero-eyebrow {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--hp-gold);
+        margin-bottom: 2rem;
+    }
 
-    <!-- wp:paragraph {"align":"center","className":"reveal-mask reveal-delay-1","style":{"typography":{"fontSize":"1rem","fontWeight":"300"},"spacing":{"margin":{"bottom":"48px"}}},"textColor":"theme-5"} -->
-    <p class="has-text-align-center reveal-mask reveal-delay-1 has-theme-5-color has-text-color"
-        style="margin-bottom:48px;font-size:1rem;font-weight:300">
-        Acompañamos cada etapa de tu vida espiritual.</p>
-    <!-- /wp:paragraph -->
+    .hp-hero-title {
+        font-family: 'Cinzel', serif;
+        font-size: clamp(3rem, 8vw, 6.5rem);
+        font-weight: 700;
+        line-height: 0.95;
+        margin: 0 0 2rem;
+        color: var(--hp-text);
+    }
 
-    <!-- Bento Grid -->
-    <!-- wp:group {"align":"wide","className":"bento-grid","layout":{"type":"default"}} -->
-    <div class="wp-block-group alignwide bento-grid">
+    .hp-hero-subtitle {
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        font-weight: 300;
+        color: var(--hp-text-muted);
+        line-height: 1.7;
+        margin-bottom: 3rem;
+    }
 
-        <!-- Card 1: Santa Misa -->
-        <!-- wp:group {"className":"bento-item reveal-mask reveal-delay-1","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"backgroundColor":"theme-4"} -->
-        <div class="wp-block-group bento-item reveal-mask reveal-delay-1 has-theme-4-background-color has-background"
-            style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
-            <!-- wp:heading {"textAlign":"center","level":3,"style":{"typography":{"fontSize":"1.15rem","fontWeight":"600"}},"textColor":"theme-2"} -->
-            <h3 class="wp-block-heading has-text-align-center has-theme-2-color has-text-color"
-                style="font-size:1.15rem;font-weight:600">Santa Misa</h3>
-            <!-- /wp:heading -->
-            <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"0.9rem","lineHeight":"1.7","fontWeight":"300"}},"textColor":"theme-5"} -->
-            <p class="has-text-align-center has-theme-5-color has-text-color"
-                style="font-size:0.9rem;line-height:1.7;font-weight:300">Dom: 10 AM, 12
-                PM, 6 PM<br>Lun–Vie: 7 PM</p>
-            <!-- /wp:paragraph -->
-        </div>
-        <!-- /wp:group -->
+    .hp-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 2.5rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.4s ease;
+    }
 
-        <!-- Card 2: Confesiones -->
-        <!-- wp:group {"className":"bento-item reveal-mask reveal-delay-2","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"backgroundColor":"theme-4"} -->
-        <div class="wp-block-group bento-item reveal-mask reveal-delay-2 has-theme-4-background-color has-background"
-            style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
-            <!-- wp:heading {"textAlign":"center","level":3,"style":{"typography":{"fontSize":"1.15rem","fontWeight":"600"}},"textColor":"theme-2"} -->
-            <h3 class="wp-block-heading has-text-align-center has-theme-2-color has-text-color"
-                style="font-size:1.15rem;font-weight:600">Confesiones</h3>
-            <!-- /wp:heading -->
-            <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"0.9rem","lineHeight":"1.7","fontWeight":"300"}},"textColor":"theme-5"} -->
-            <p class="has-text-align-center has-theme-5-color has-text-color"
-                style="font-size:0.9rem;line-height:1.7;font-weight:300">Sábados: 4 – 5:30
-                PM<br>O con cita previa</p>
-            <!-- /wp:paragraph -->
-        </div>
-        <!-- /wp:group -->
+    .hp-btn-primary {
+        background: var(--hp-gold);
+        color: var(--hp-bg);
+    }
 
-        <!-- Card 3: Sacramentos -->
-        <!-- wp:group {"className":"bento-item reveal-mask reveal-delay-3","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"backgroundColor":"theme-4"} -->
-        <div class="wp-block-group bento-item reveal-mask reveal-delay-3 has-theme-4-background-color has-background"
-            style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
-            <!-- wp:heading {"textAlign":"center","level":3,"style":{"typography":{"fontSize":"1.15rem","fontWeight":"600"}},"textColor":"theme-2"} -->
-            <h3 class="wp-block-heading has-text-align-center has-theme-2-color has-text-color"
-                style="font-size:1.15rem;font-weight:600">Sacramentos</h3>
-            <!-- /wp:heading -->
-            <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"0.9rem","lineHeight":"1.7","fontWeight":"300"}},"textColor":"theme-5"} -->
-            <p class="has-text-align-center has-theme-5-color has-text-color"
-                style="font-size:0.9rem;line-height:1.7;font-weight:300">Bautismos ·
-                Matrimonios<br>Primera Comunión · Confirmación</p>
-            <!-- /wp:paragraph -->
-        </div>
-        <!-- /wp:group -->
+    .hp-btn-primary:hover {
+        background: #f7b733;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(236, 164, 19, 0.2);
+    }
 
-        <!-- Card 4: Ministerios -->
-        <!-- wp:group {"className":"bento-item reveal-mask reveal-delay-4","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"backgroundColor":"theme-4"} -->
-        <div class="wp-block-group bento-item reveal-mask reveal-delay-4 has-theme-4-background-color has-background"
-            style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
-            <!-- wp:heading {"textAlign":"center","level":3,"style":{"typography":{"fontSize":"1.15rem","fontWeight":"600"}},"textColor":"theme-2"} -->
-            <h3 class="wp-block-heading has-text-align-center has-theme-2-color has-text-color"
-                style="font-size:1.15rem;font-weight:600">Ministerios</h3>
-            <!-- /wp:heading -->
-            <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"0.9rem","lineHeight":"1.7","fontWeight":"300"}},"textColor":"theme-5"} -->
-            <p class="has-text-align-center has-theme-5-color has-text-color"
-                style="font-size:0.9rem;line-height:1.7;font-weight:300">Pastoral Social ·
-                Catequesis<br>Coros · Jóvenes</p>
-            <!-- /wp:paragraph -->
-        </div>
-        <!-- /wp:group -->
+    .hp-btn-outline {
+        background: transparent;
+        color: var(--hp-text);
+        border: 1px solid var(--hp-border);
+    }
 
-    </div>
-    <!-- /wp:group -->
-</div>
-<!-- /wp:group -->
+    .hp-btn-outline:hover {
+        border-color: var(--hp-gold);
+        color: var(--hp-gold);
+    }
 
-<!-- Section 3: Community — Cinematic Cover -->
-<!-- wp:cover {"dimRatio":80,"overlayColor":"theme-2","minHeight":500,"minHeightUnit":"px","align":"full","className":"reveal-mask"} -->
-<div class="wp-block-cover alignfull reveal-mask" style="min-height:500px" data-bg-color="#0b1d37">
-    <span aria-hidden="true"
-        class="wp-block-cover__background has-theme-2-background-color has-background-dim-80 has-background-dim"></span>
-    <div class="wp-block-cover__inner-container">
-        <!-- wp:group {"layout":{"type":"constrained","contentSize":"640px"}} -->
-        <div class="wp-block-group">
-            <!-- wp:heading {"textAlign":"center","level":2,"className":"reveal-mask reveal-delay-1","style":{"typography":{"textTransform":"uppercase","letterSpacing":"4px","fontWeight":"400"}},"textColor":"theme-3","fontSize":"large"} -->
-            <h2 class="wp-block-heading has-text-align-center reveal-mask reveal-delay-1 has-theme-3-color has-text-color has-large-font-size"
-                style="font-weight:400;text-transform:uppercase;letter-spacing:4px">Vida en Comunidad</h2>
-            <!-- /wp:heading -->
+    .hp-hero-actions {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 
-            <!-- wp:paragraph {"align":"center","className":"reveal-mask reveal-delay-2","style":{"typography":{"fontSize":"1.2rem","lineHeight":"1.8","fontWeight":"300","fontStyle":"italic"}},"textColor":"theme-4"} -->
-            <p class="has-text-align-center reveal-mask reveal-delay-2 has-theme-4-color has-text-color"
-                style="font-size:1.2rem;line-height:1.8;font-weight:300;font-style:italic">
-                "Donde dos o tres se reúnen en mi nombre, allí estoy yo en medio de ellos."<br><em>— Mateo 18:20</em>
-            </p>
-            <!-- /wp:paragraph -->
+    /* Bento Grid Services */
+    .hp-services {
+        padding: clamp(4rem, 10vh, 8rem) clamp(1.5rem, 5vw, 4rem);
+        background: var(--hp-bg);
+        position: relative;
+    }
 
-            <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"className":"reveal-mask reveal-delay-3","style":{"spacing":{"margin":{"top":"28px"}}}} -->
-            <div class="wp-block-buttons reveal-mask reveal-delay-3" style="margin-top:28px">
-                <!-- wp:button {"backgroundColor":"theme-3","textColor":"theme-2","className":"is-style-fill","style":{"border":{"radius":"100px"},"spacing":{"padding":{"top":"14px","bottom":"14px","left":"32px","right":"32px"}}}} -->
-                <div class="wp-block-button is-style-fill"><a
-                        class="wp-block-button__link has-theme-2-color has-theme-3-background-color has-text-color has-background wp-element-button"
-                        href="<?php echo esc_url(home_url('/ministerios/')); ?>"
-                        style="border-radius:100px;padding-top:14px;padding-right:32px;padding-bottom:14px;padding-left:32px">Ver
-                        Ministerios</a></div>
-                <!-- /wp:button -->
-                <!-- wp:button {"textColor":"theme-4","className":"is-style-outline","style":{"border":{"radius":"100px"},"spacing":{"padding":{"top":"14px","bottom":"14px","left":"32px","right":"32px"}}}} -->
-                <div class="wp-block-button is-style-outline"><a
-                        class="wp-block-button__link has-theme-4-color has-text-color wp-element-button"
-                        href="<?php echo esc_url(home_url('/soy-nuevo/')); ?>"
-                        style="border-radius:100px;padding-top:14px;padding-right:32px;padding-bottom:14px;padding-left:32px">Soy
-                        Nuevo</a>
-                </div>
-                <!-- /wp:button -->
+    .hp-section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .hp-section-title {
+        font-family: 'Cinzel', serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: var(--hp-text);
+        margin-bottom: 1rem;
+    }
+
+    .hp-bento-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 24px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .hp-bento-item {
+        background: var(--hp-bg-alt);
+        border: 1px solid var(--hp-border);
+        border-radius: 12px;
+        padding: 3rem 2rem;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .hp-bento-item:hover {
+        border-color: var(--hp-gold);
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .hp-bento-item::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top right, var(--hp-gold-muted), transparent 50%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .hp-bento-item:hover::before {
+        opacity: 1;
+    }
+
+    .hp-bento-icon {
+        font-size: 2.5rem;
+        color: var(--hp-gold);
+        margin-bottom: 1.5rem;
+    }
+
+    .hp-bento-title {
+        font-family: 'Cinzel', serif;
+        font-size: 1.5rem;
+        color: var(--hp-text);
+        margin-bottom: 1rem;
+    }
+
+    .hp-bento-desc {
+        font-size: 0.95rem;
+        color: var(--hp-text-muted);
+        line-height: 1.6;
+    }
+
+    /* Grid Spans */
+    .hp-card-misa {
+        grid-column: span 12;
+        padding: 4rem 2rem;
+    }
+
+    .hp-card-confesiones {
+        grid-column: span 12;
+    }
+
+    .hp-card-sacramentos {
+        grid-column: span 12;
+    }
+
+    .hp-card-ministerios {
+        grid-column: span 12;
+    }
+
+    @media (min-width: 768px) {
+        .hp-card-misa {
+            grid-column: span 8;
+        }
+
+        .hp-card-confesiones {
+            grid-column: span 4;
+        }
+
+        .hp-card-sacramentos {
+            grid-column: span 6;
+        }
+
+        .hp-card-ministerios {
+            grid-column: span 6;
+        }
+    }
+
+    /* Community CTA footer-like section inside page */
+    .hp-community {
+        padding: clamp(5rem, 12vh, 10rem) clamp(1.5rem, 5vw, 4rem);
+        background: var(--hp-bg-alt);
+        text-align: center;
+        border-top: 1px solid var(--hp-border);
+        position: relative;
+    }
+
+    .hp-community::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 100%, var(--hp-gold-muted) 0%, transparent 60%);
+        pointer-events: none;
+    }
+</style>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<div class="home-premium">
+    <!-- Hero Section -->
+    <section class="hp-hero">
+        <div class="hp-hero-bg"></div>
+        <div class="hp-hero-content">
+            <div class="hp-hero-eyebrow">Capellanía Cristo Rey</div>
+            <h1 class="hp-hero-title">Bienvenido a Casa</h1>
+            <p class="hp-hero-subtitle">Somos una comunidad católica comprometida con la Espiritualidad de la Comunión.
+                Te invitamos a caminar juntos en la fe, el servicio y la celebración.</p>
+            <div class="hp-hero-actions">
+                <a href="<?php echo esc_url(home_url('/soy-nuevo/')); ?>" class="hp-btn hp-btn-primary">Explorar
+                    Comunidad</a>
+                <a href="<?php echo esc_url(home_url('/horarios/')); ?>" class="hp-btn hp-btn-outline">Horarios de
+                    Misa</a>
             </div>
-            <!-- /wp:buttons -->
         </div>
-        <!-- /wp:group -->
-    </div>
-</div>
-<!-- /wp:cover -->
+    </section>
 
-<!-- Section 4: Verbum Domini — Staggered Cards -->
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"}}},"backgroundColor":"theme-1","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-theme-1-background-color has-background"
-    style="padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80)"
-    data-bg-color="#F0EEE9">
-
-    <!-- wp:heading {"textAlign":"center","level":2,"className":"reveal-mask","style":{"typography":{"textTransform":"uppercase","letterSpacing":"4px","fontWeight":"400"},"spacing":{"margin":{"bottom":"12px"}}},"textColor":"theme-2","fontSize":"large"} -->
-    <h2 class="wp-block-heading has-text-align-center reveal-mask has-theme-2-color has-text-color has-large-font-size"
-        style="margin-bottom:12px;font-weight:400;text-transform:uppercase;letter-spacing:4px">Verbum Domini</h2>
-    <!-- /wp:heading -->
-
-    <!-- wp:paragraph {"align":"center","className":"reveal-mask reveal-delay-1","style":{"typography":{"fontSize":"1rem","fontWeight":"300"},"spacing":{"margin":{"bottom":"48px"}}},"textColor":"theme-5"} -->
-    <p class="has-text-align-center reveal-mask reveal-delay-1 has-theme-5-color has-text-color"
-        style="margin-bottom:48px;font-size:1rem;font-weight:300">
-        Reflexiones diarias para alimentar tu vida espiritual.</p>
-    <!-- /wp:paragraph -->
-
-    <!-- wp:query {"queryId":1,"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false},"align":"wide"} -->
-    <div class="wp-block-query alignwide">
-        <!-- wp:post-template {"style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"grid","columnCount":3}} -->
-        <!-- wp:group {"className":"bento-item","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}}} -->
-        <div class="wp-block-group bento-item"
-            style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
-            <!-- wp:post-date {"style":{"typography":{"fontSize":"0.75rem","textTransform":"uppercase","letterSpacing":"1.5px","fontWeight":"500"}},"textColor":"theme-3"} /-->
-            <!-- wp:post-title {"isLink":true,"style":{"typography":{"fontSize":"1.1rem","fontWeight":"600","lineHeight":"1.3"}},"textColor":"theme-2"} /-->
-            <!-- wp:post-excerpt {"excerptLength":20,"style":{"typography":{"fontSize":"0.9rem","fontWeight":"300","lineHeight":"1.6"}},"textColor":"theme-5"} /-->
+    <!-- Services Bento Grid -->
+    <section class="hp-services">
+        <div class="hp-section-header">
+            <h2 class="hp-section-title">Nuestros Servicios</h2>
+            <p class="hp-hero-subtitle" style="margin-bottom:0; max-width:600px; margin-inline:auto;">Acompañamos cada
+                etapa de tu vida espiritual con dignidad y devoción.</p>
         </div>
-        <!-- /wp:group -->
-        <!-- /wp:post-template -->
-    </div>
-    <!-- /wp:query -->
 
-    <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"className":"reveal-mask reveal-delay-2","style":{"spacing":{"margin":{"top":"40px"}}}} -->
-    <div class="wp-block-buttons reveal-mask reveal-delay-2" style="margin-top:40px">
-        <!-- wp:button {"className":"is-style-outline","style":{"border":{"radius":"100px"},"spacing":{"padding":{"top":"14px","bottom":"14px","left":"32px","right":"32px"}}}} -->
-        <div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button"
-                href="<?php echo esc_url(home_url('/verbum-domini/')); ?>"
-                style="border-radius:100px;padding-top:14px;padding-right:32px;padding-bottom:14px;padding-left:32px">Ver
-                Todas las
-                Reflexiones →</a></div>
-        <!-- /wp:button -->
-    </div>
-    <!-- /wp:buttons -->
+        <div class="hp-bento-grid">
+            <a href="<?php echo esc_url(home_url('/horarios/')); ?>" class="hp-bento-item hp-card-misa">
+                <div class="hp-bento-icon">✧</div>
+                <h3 class="hp-bento-title">Santa Misa</h3>
+                <p class="hp-bento-desc">Encuentra a Dios en la Eucaristía.<br>Domingos: 10AM, 12PM, 6PM | Lunes –
+                    Viernes: 7PM</p>
+            </a>
+
+            <a href="<?php echo esc_url(home_url('/contacto/')); ?>" class="hp-bento-item hp-card-confesiones">
+                <div class="hp-bento-icon">♱</div>
+                <h3 class="hp-bento-title">Confesiones</h3>
+                <p class="hp-bento-desc">Sábados de 4:00 PM a 5:30 PM,<br>o con cita previa.</p>
+            </a>
+
+            <a href="<?php echo esc_url(home_url('/sacramentos/')); ?>" class="hp-bento-item hp-card-sacramentos">
+                <div class="hp-bento-icon">✤</div>
+                <h3 class="hp-bento-title">Sacramentos</h3>
+                <p class="hp-bento-desc">Bautismos, Matrimonios, Primera Comunión y Confirmación.</p>
+            </a>
+
+            <a href="<?php echo esc_url(home_url('/ministerios/')); ?>" class="hp-bento-item hp-card-ministerios">
+                <div class="hp-bento-icon">👥</div>
+                <h3 class="hp-bento-title">Ministerios</h3>
+                <p class="hp-bento-desc">Involúcrate en Pastoral Social, Catequesis, Coros o Jóvenes.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Community CTA -->
+    <section class="hp-community">
+        <div class="hp-hero-content" style="margin:0 auto;">
+            <div class="hp-hero-eyebrow">Vida en Comunidad</div>
+            <h2 class="hp-hero-title" style="font-size: clamp(2rem, 5vw, 4rem);">Unirse a la Comunidad</h2>
+            <p class="hp-hero-subtitle" style="font-style: italic;">"Donde dos o tres se reúnen en mi nombre, allí estoy
+                yo en medio de ellos." <br>— Mateo 18:20</p>
+            <div class="hp-hero-actions">
+                <a href="<?php echo esc_url(home_url('/soy-nuevo/')); ?>" class="hp-btn hp-btn-primary">Soy Nuevo</a>
+            </div>
+        </div>
+    </section>
 </div>
-<!-- /wp:group -->
+<!-- /wp:html -->
