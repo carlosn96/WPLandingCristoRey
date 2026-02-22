@@ -37,6 +37,17 @@ def get_auth():
     return (WP_USER, WP_APP_PASSWORD)
 
 
+def get_headers():
+    """Retorna las cabeceras incluyendo el fallback X-WP-Auth."""
+    import base64
+    user_pass = f"{WP_USER}:{WP_APP_PASSWORD}"
+    encoded_u_p = base64.b64encode(user_pass.encode()).decode()
+    return {
+        "X-WP-Auth": f"Basic {encoded_u_p}",
+        "Content-Type": "application/json"
+    }
+
+
 def get_api_url(endpoint: str) -> str:
     """Construye la URL completa de la API REST de WordPress."""
     if not WP_URL:
@@ -69,6 +80,7 @@ def create_post(title: str, content: str, status: str = "draft", featured_media:
     response = requests.post(
         get_api_url("posts"),
         auth=get_auth(),
+        headers=get_headers(),
         json=payload,
     )
     response.raise_for_status()
@@ -101,6 +113,7 @@ def create_page(title: str, content: str, status: str = "draft", featured_media:
     response = requests.post(
         get_api_url("pages"),
         auth=get_auth(),
+        headers=get_headers(),
         json=payload,
     )
     response.raise_for_status()
@@ -143,10 +156,11 @@ def upload_media(file_path: str) -> dict:
     if not mime_type:
         mime_type = "application/octet-stream"
 
-    headers = {
+    headers = get_headers()
+    headers.update({
         "Content-Disposition": f'attachment; filename="{path.name}"',
         "Content-Type": mime_type,
-    }
+    })
 
     with open(path, "rb") as f:
         data = f.read()
