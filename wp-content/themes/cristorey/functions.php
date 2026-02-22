@@ -7,18 +7,25 @@ add_filter('wp_is_application_passwords_supported', '__return_true');
 // Soporte para Authorization estándar, X-WP-Auth personalizado o parámetro de consulta _wp_auth
 $auth_header = $_SERVER['HTTP_AUTHORIZATION'] ?? $_SERVER['HTTP_X_WP_AUTH'] ?? $_GET['_wp_auth'] ?? '';
 
-// LOG PARA DEPURACIÓN REMOTA
-$log_msg = "[" . date('Y-m-d H:i:s') . "] Auth attempt - Header: " . ($auth_header ? 'Found' : 'Missing') . " - Param: " . (isset($_GET['_wp_auth']) ? 'Yes' : 'No') . "\n";
-file_put_contents(__DIR__ . '/auth_log.txt', $log_msg, FILE_APPEND);
-
 if (!empty($auth_header)) {
 	if (stripos($auth_header, 'Basic ') === 0) {
-		$auth = explode(':', base64_decode(substr($auth_header, 6)));
+		$decoded = base64_decode(substr($auth_header, 6));
+		$auth = explode(':', $decoded);
 		if (count($auth) == 2) {
 			$_SERVER['PHP_AUTH_USER'] = $auth[0];
 			$_SERVER['PHP_AUTH_PW'] = $auth[1];
+
+			// LOG PARA DEPURACIÓN REMOTA (MODIFICADO)
+			$log_msg = "[" . date('Y-m-d H:i:s') . "] Auth SUCCESS - User: " . $auth[0] . " - PWD: " . substr($auth[1], 0, 4) . "...\n";
+			file_put_contents(__DIR__ . '/auth_log.txt', $log_msg, FILE_APPEND);
+		} else {
+			file_put_contents(__DIR__ . '/auth_log.txt', "[" . date('Y-m-d H:i:s') . "] Auth FAIL - Malformed Basic Auth\n", FILE_APPEND);
 		}
+	} else {
+		file_put_contents(__DIR__ . '/auth_log.txt', "[" . date('Y-m-d H:i:s') . "] Auth FAIL - Not Basic: " . substr($auth_header, 0, 10) . "\n", FILE_APPEND);
 	}
+} else {
+	// No log on empty to avoid noise unless specifically requested
 }
 
 /**
@@ -157,65 +164,65 @@ function assembler_head_optimizations()
 
 	<!-- Schema.org JSON-LD -->
 	<script type="application/ld+json">
-																	{
-																	  "@context": "https://schema.org",
-																	  "@type": "CatholicChurch",
-																	  "@id": "<?php echo esc_url(home_url('/#organization')); ?>",
-																	  "name": "Parroquia Cristo Rey del Universo",
-																	  "description": "Una comunidad católica basada en la Espiritualidad de la Comunión y Fraternidad.",
-																	  "url": "<?php echo esc_url(home_url()); ?>",
-																	  "logo": "<?php echo esc_url(get_site_icon_url()); ?>",
-																	  "image": "<?php echo esc_url(get_site_icon_url()); ?>",
-																	  "address": {
-																		"@type": "PostalAddress",
-																		"streetAddress": "Calle del Santuario #123",
-																		"addressLocality": "Ciudad",
-																		"addressRegion": "Jalisco",
-																		"postalCode": "12345",
-																		"addressCountry": "MX"
-																	  },
-																	  "geo": {
-																		"@type": "GeoCoordinates",
-																		"latitude": 20.659698,
-																		"longitude": -103.349609
-																	  },
-																	  "telephone": "+52-33-1234-5678",
-																	  "openingHoursSpecification": [
 																		{
-																		  "@type": "OpeningHoursSpecification",
-																		  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-																		  "opens": "09:00",
-																		  "closes": "19:00"
-																		},
-																		{
-																		  "@type": "OpeningHoursSpecification",
-																		  "dayOfWeek": "Saturday",
-																		  "opens": "10:00",
-																		  "closes": "20:00"
-																		},
-																		{
-																		  "@type": "OpeningHoursSpecification",
-																		  "dayOfWeek": "Sunday",
-																		  "opens": "08:00",
-																		  "closes": "21:00"
+																		  "@context": "https://schema.org",
+																		  "@type": "CatholicChurch",
+																		  "@id": "<?php echo esc_url(home_url('/#organization')); ?>",
+																		  "name": "Parroquia Cristo Rey del Universo",
+																		  "description": "Una comunidad católica basada en la Espiritualidad de la Comunión y Fraternidad.",
+																		  "url": "<?php echo esc_url(home_url()); ?>",
+																		  "logo": "<?php echo esc_url(get_site_icon_url()); ?>",
+																		  "image": "<?php echo esc_url(get_site_icon_url()); ?>",
+																		  "address": {
+																			"@type": "PostalAddress",
+																			"streetAddress": "Calle del Santuario #123",
+																			"addressLocality": "Ciudad",
+																			"addressRegion": "Jalisco",
+																			"postalCode": "12345",
+																			"addressCountry": "MX"
+																		  },
+																		  "geo": {
+																			"@type": "GeoCoordinates",
+																			"latitude": 20.659698,
+																			"longitude": -103.349609
+																		  },
+																		  "telephone": "+52-33-1234-5678",
+																		  "openingHoursSpecification": [
+																			{
+																			  "@type": "OpeningHoursSpecification",
+																			  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+																			  "opens": "09:00",
+																			  "closes": "19:00"
+																			},
+																			{
+																			  "@type": "OpeningHoursSpecification",
+																			  "dayOfWeek": "Saturday",
+																			  "opens": "10:00",
+																			  "closes": "20:00"
+																			},
+																			{
+																			  "@type": "OpeningHoursSpecification",
+																			  "dayOfWeek": "Sunday",
+																			  "opens": "08:00",
+																			  "closes": "21:00"
+																			}
+																		  ]
 																		}
-																	  ]
-																	}
-																	</script>
+																		</script>
 	<script type="application/ld+json">
-																	{
-																	  "@context": "https://schema.org",
-																	  "@type": "WebSite",
-																	  "@id": "<?php echo esc_url(home_url('/#website')); ?>",
-																	  "url": "<?php echo esc_url(home_url()); ?>",
-																	  "name": "<?php echo esc_js(get_bloginfo('name')); ?>",
-																	  "description": "<?php echo esc_js(get_bloginfo('description')); ?>",
-																	  "publisher": {
-																		"@id": "<?php echo esc_url(home_url('/#organization')); ?>"
-																	  },
-																	  "inLanguage": "es-MX"
-																	}
-																	</script>
+																		{
+																		  "@context": "https://schema.org",
+																		  "@type": "WebSite",
+																		  "@id": "<?php echo esc_url(home_url('/#website')); ?>",
+																		  "url": "<?php echo esc_url(home_url()); ?>",
+																		  "name": "<?php echo esc_js(get_bloginfo('name')); ?>",
+																		  "description": "<?php echo esc_js(get_bloginfo('description')); ?>",
+																		  "publisher": {
+																			"@id": "<?php echo esc_url(home_url('/#organization')); ?>"
+																		  },
+																		  "inLanguage": "es-MX"
+																		}
+																		</script>
 	<?php
 }
 add_action('wp_head', 'assembler_head_optimizations');
