@@ -10,7 +10,7 @@
 <div class="wp-block-group alignfull has-theme-1-background-color has-background"
     style="padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80)">
     <!-- wp:heading {"textAlign":"center","level":1,"className":"reveal-mask","style":{"typography":{"textTransform":"uppercase","letterSpacing":"4px","fontWeight":"400"}},"textColor":"theme-2","fontSize":"x-large"} -->
-    <h1 class="wp-block-heading has-text-align-center reveal-mask has-theme-2-color has-text-color has-x-large-font-size"
+    <h1 class="wp-block-heading has-text-align-center reveal-mask has-theme-4-color has-text-color has-x-large-font-size"
         style="font-weight:400;text-transform:uppercase;letter-spacing:4px">Contacto</h1>
     <!-- /wp:heading -->
 
@@ -26,7 +26,7 @@
         <div class="wp-block-column" style="flex-basis:40%">
             <!-- wp:group {"className":"bento-item","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}}} -->
             <div class="wp-block-group bento-item"
-                style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
+                style="background-color:#161411;color:#fcfaf7;padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
                 <!-- wp:heading {"level":3,"style":{"typography":{"fontSize":"0.75rem","textTransform":"uppercase","letterSpacing":"2.5px","fontWeight":"600"},"spacing":{"margin":{"bottom":"20px"}}},"textColor":"theme-3"} -->
                 <h3 class="wp-block-heading has-theme-3-color has-text-color"
                     style="margin-bottom:20px;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:2.5px">
@@ -35,26 +35,31 @@
 
                 <!-- wp:paragraph {"style":{"typography":{"fontSize":"0.95rem","lineHeight":"1.9","fontWeight":"300"}},"textColor":"theme-5"} -->
                 <p class="has-theme-5-color has-text-color" style="font-size:0.95rem;line-height:1.9;font-weight:300">
-                    <strong>Dirección</strong><br>Calle del Santuario #123<br>Col. Centro, Ciudad, CP 12345
+                    <strong>Dirección</strong><br><?php echo wp_kses_post(get_option('cr_inst_address', 'Calle del Santuario #123<br>Col. Centro, Ciudad, CP 12345')); ?>
+                </p>
+                <!-- /wp:paragraph -->
+
+                <!-- wp:shortcode -->
+                <div class="wp-block-shortcode" style="margin-bottom: 24px;">[wpgmza id="1"]</div>
+                <!-- /wp:shortcode -->
+
+                <!-- wp:paragraph {"style":{"typography":{"fontSize":"0.95rem","lineHeight":"1.9","fontWeight":"300"}},"textColor":"theme-5"} -->
+                <p class="has-theme-5-color has-text-color" style="font-size:0.95rem;line-height:1.9;font-weight:300">
+                    <strong>Teléfono</strong><br><?php echo esc_html(get_option('cr_inst_phone', '(33) 1234-5678')); ?>
                 </p>
                 <!-- /wp:paragraph -->
 
                 <!-- wp:paragraph {"style":{"typography":{"fontSize":"0.95rem","lineHeight":"1.9","fontWeight":"300"}},"textColor":"theme-5"} -->
                 <p class="has-theme-5-color has-text-color" style="font-size:0.95rem;line-height:1.9;font-weight:300">
-                    <strong>Teléfono</strong><br>(33) 1234-5678
-                </p>
-                <!-- /wp:paragraph -->
-
-                <!-- wp:paragraph {"style":{"typography":{"fontSize":"0.95rem","lineHeight":"1.9","fontWeight":"300"}},"textColor":"theme-5"} -->
-                <p class="has-theme-5-color has-text-color" style="font-size:0.95rem;line-height:1.9;font-weight:300">
-                    <strong>Correo</strong><br>info@cristoreyrc.com
+                    <strong>Correo</strong><br><?php echo esc_html(get_option('cr_inst_email', 'info@cristoreyrc.com')); ?>
                 </p>
                 <!-- /wp:paragraph -->
 
                 <!-- wp:paragraph {"style":{"typography":{"fontSize":"0.95rem","lineHeight":"1.9","fontWeight":"300"}},"textColor":"theme-5"} -->
                 <p class="has-theme-5-color has-text-color" style="font-size:0.95rem;line-height:1.9;font-weight:300">
                     <strong>Horario de
-                        Oficina</strong><br>Lun – Vie: 9:00 AM – 5:00 PM<br>Sáb: 9:00 AM – 1:00 PM</p>
+                        Oficina</strong><br><?php echo wp_kses_post(get_option('cr_inst_schedule', 'Lun – Vie: 9:00 AM – 5:00 PM<br>Sáb: 9:00 AM – 1:00 PM')); ?>
+                </p>
                 <!-- /wp:paragraph -->
             </div>
             <!-- /wp:group -->
@@ -65,7 +70,7 @@
         <div class="wp-block-column" style="flex-basis:60%">
             <!-- wp:group {"className":"bento-item","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}}} -->
             <div class="wp-block-group bento-item"
-                style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
+                style="background-color:#161411;color:#fcfaf7;padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
                 <!-- wp:heading {"level":3,"style":{"typography":{"fontSize":"0.75rem","textTransform":"uppercase","letterSpacing":"2.5px","fontWeight":"600"},"spacing":{"margin":{"bottom":"20px"}}},"textColor":"theme-3"} -->
                 <h3 class="wp-block-heading has-theme-3-color has-text-color"
                     style="margin-bottom:20px;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:2.5px">
@@ -78,11 +83,9 @@
                     pondremos en contacto contigo a la brevedad.</p>
                 <!-- /wp:paragraph -->
 
-                <!-- wp:paragraph {"style":{"typography":{"fontSize":"0.9rem","fontStyle":"italic","fontWeight":"300"}},"textColor":"theme-5"} -->
-                <p class="has-theme-5-color has-text-color" style="font-size:0.9rem;font-style:italic;font-weight:300">
-                    Aquí puedes
-                    insertar un bloque de formulario de Jetpack o cualquier plugin de formulario de contacto.</p>
-                <!-- /wp:paragraph -->
+                <!-- wp:shortcode -->
+                <div class="wp-block-shortcode">[wpforms id="82"]</div>
+                <!-- /wp:shortcode -->
             </div>
             <!-- /wp:group -->
         </div>

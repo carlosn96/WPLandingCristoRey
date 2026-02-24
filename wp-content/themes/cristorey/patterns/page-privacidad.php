@@ -10,7 +10,7 @@
 <div class="wp-block-group alignfull has-theme-1-background-color has-background"
     style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)">
     <!-- wp:heading {"textAlign":"center","level":1,"style":{"typography":{"textTransform":"uppercase","letterSpacing":"3px","fontWeight":"400"}},"textColor":"theme-2","fontSize":"x-large"} -->
-    <h1 class="wp-block-heading has-text-align-center has-theme-2-color has-text-color has-x-large-font-size"
+    <h1 class="wp-block-heading has-text-align-center has-theme-4-color has-text-color has-x-large-font-size"
         style="font-weight:400;text-transform:uppercase;letter-spacing:3px">Política de Privacidad</h1>
     <!-- /wp:heading -->
 
@@ -20,7 +20,7 @@
     <!-- /wp:paragraph -->
 
     <!-- wp:heading {"level":2,"style":{"typography":{"fontSize":"1.1rem","fontWeight":"600"},"spacing":{"margin":{"top":"32px","bottom":"12px"}}},"textColor":"theme-2"} -->
-    <h2 class="wp-block-heading has-theme-2-color has-text-color"
+    <h2 class="wp-block-heading has-theme-4-color has-text-color"
         style="margin-top:32px;margin-bottom:12px;font-size:1.1rem;font-weight:600">1. Información que Recopilamos</h2>
     <!-- /wp:heading -->
     <!-- wp:paragraph {"style":{"typography":{"fontSize":"0.95rem","lineHeight":"1.8"}},"textColor":"theme-5"} -->
@@ -31,7 +31,7 @@
     <!-- /wp:paragraph -->
 
     <!-- wp:heading {"level":2,"style":{"typography":{"fontSize":"1.1rem","fontWeight":"600"},"spacing":{"margin":{"top":"32px","bottom":"12px"}}},"textColor":"theme-2"} -->
-    <h2 class="wp-block-heading has-theme-2-color has-text-color"
+    <h2 class="wp-block-heading has-theme-4-color has-text-color"
         style="margin-top:32px;margin-bottom:12px;font-size:1.1rem;font-weight:600">2. Uso de la Información</h2>
     <!-- /wp:heading -->
     <!-- wp:paragraph {"style":{"typography":{"fontSize":"0.95rem","lineHeight":"1.8"}},"textColor":"theme-5"} -->
@@ -41,7 +41,7 @@
     <!-- /wp:paragraph -->
 
     <!-- wp:heading {"level":2,"style":{"typography":{"fontSize":"1.1rem","fontWeight":"600"},"spacing":{"margin":{"top":"32px","bottom":"12px"}}},"textColor":"theme-2"} -->
-    <h2 class="wp-block-heading has-theme-2-color has-text-color"
+    <h2 class="wp-block-heading has-theme-4-color has-text-color"
         style="margin-top:32px;margin-bottom:12px;font-size:1.1rem;font-weight:600">3. Seguridad</h2>
     <!-- /wp:heading -->
     <!-- wp:paragraph {"style":{"typography":{"fontSize":"0.95rem","lineHeight":"1.8"}},"textColor":"theme-5"} -->
@@ -51,12 +51,13 @@
     <!-- /wp:paragraph -->
 
     <!-- wp:heading {"level":2,"style":{"typography":{"fontSize":"1.1rem","fontWeight":"600"},"spacing":{"margin":{"top":"32px","bottom":"12px"}}},"textColor":"theme-2"} -->
-    <h2 class="wp-block-heading has-theme-2-color has-text-color"
+    <h2 class="wp-block-heading has-theme-4-color has-text-color"
         style="margin-top:32px;margin-bottom:12px;font-size:1.1rem;font-weight:600">4. Contacto</h2>
     <!-- /wp:heading -->
     <!-- wp:paragraph {"style":{"typography":{"fontSize":"0.95rem","lineHeight":"1.8"}},"textColor":"theme-5"} -->
     <p class="has-theme-5-color has-text-color" style="font-size:0.95rem;line-height:1.8">Si tiene preguntas sobre esta
-        política de privacidad, puede contactarnos en info@cristoreyrc.com o visitarnos en nuestra oficina parroquial.
+        política de privacidad, puede contactarnos en info@cristoreyrc.com o visitarnos en nuestra oficina de la
+        capellanía.
     </p>
     <!-- /wp:paragraph -->
 </div>
