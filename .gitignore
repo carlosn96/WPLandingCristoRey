@@ -39,12 +39,16 @@ wp-content/themes/*
 !wp-content/mu-plugins/
 !wp-content/mu-plugins/**
 
-# 3. Custom Plugins (añade tu plugin personalizado aquí)
+# 3. Custom Plugins & Core Integrations
 !wp-content/plugins/
 wp-content/plugins/*
 !wp-content/plugins/verbum-image-manager/
-# Ejemplo para incluir tu plugin:
-# !wp-content/plugins/mi-helper-ia/**
+!wp-content/plugins/wpforms-lite/
+!wp-content/plugins/wp-google-maps/
+!wp-content/plugins/seo-by-rank-math/
+!wp-content/plugins/wordfence/
+!wp-content/plugins/updraftplus/
+!wp-content/plugins/w3-total-cache/
 
 # ===========================================
 # Excluir archivos generados dentro del tema
