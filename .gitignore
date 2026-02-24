@@ -42,6 +42,7 @@ wp-content/themes/*
 # 3. Custom Plugins & Core Integrations
 !wp-content/plugins/
 wp-content/plugins/*
+!wp-content/plugins/cristorey-institucional/
 !wp-content/plugins/verbum-image-manager/
 !wp-content/plugins/wpforms-lite/
 !wp-content/plugins/wp-google-maps/
