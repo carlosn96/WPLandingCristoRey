@@ -2,9 +2,9 @@
  * Cristo Rey UX Engine — "Cinematic Flow"
  * =========================================
  * High-end interaction layer: mask reveals, staggered choreography,
- * color-block transitions, parallax depth, and cursor adaptive.
+ * color-block transitions, parallax depth, and tactile micro-moments.
  *
- * @version 2.0.0
+ * @version 3.0.0 — Dark Editorial Unification
  */
 
 (function () {
@@ -94,65 +94,16 @@
     }
 
     /* ------------------------------------------------------------------
-     * 4. Premium Sticky Header & Mobile Menu
-     * ----------------------------------------------------------------*/
-    function initStickyHeader() {
-        const header = document.querySelector('.cr-premium-header');
-        if (!header) return;
-
-        const sentinel = document.createElement('div');
-        sentinel.setAttribute('aria-hidden', 'true');
-        Object.assign(sentinel.style, {
-            position: 'absolute', top: '0', height: '1px',
-            width: '100%', pointerEvents: 'none'
-        });
-        document.body.prepend(sentinel);
-
-        const observer = new IntersectionObserver(([e]) => {
-            header.classList.toggle('scrolled', !e.isIntersecting);
-        }, { rootMargin: '-1px 0px 0px 0px', threshold: [1] });
-
-        observer.observe(sentinel);
-    }
-
-    function initMobileMenu() {
-        const toggleBtn = document.querySelector('.cr-mobile-toggle');
-        const overlay = document.querySelector('.cr-mobile-overlay');
-        const body = document.body;
-
-        if (!toggleBtn || !overlay) return;
-
-        toggleBtn.addEventListener('click', () => {
-            const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-
-            toggleBtn.setAttribute('aria-expanded', !isExpanded);
-            overlay.classList.toggle('is-active', !isExpanded);
-            overlay.setAttribute('aria-hidden', isExpanded);
-
-            // Prevent scrolling on body when menu is open
-            body.style.overflow = !isExpanded ? 'hidden' : '';
-        });
-
-        // Close menu when a link is clicked
-        const links = overlay.querySelectorAll('a');
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                toggleBtn.setAttribute('aria-expanded', 'false');
-                overlay.classList.remove('is-active');
-                overlay.setAttribute('aria-hidden', 'true');
-                body.style.overflow = '';
-            });
-        });
-    }
-
-    /* ------------------------------------------------------------------
-     * 5. Micro-Moments — Tactile Click Feedback
+     * 4. Micro-Moments — Tactile Click Feedback
+     *    (Scoped to interactive elements only, not all links)
      * ----------------------------------------------------------------*/
     function initMicroMoments() {
         if (prefersReducedMotion) return;
 
+        const INTERACTIVE = '.wp-element-button, .wp-block-button__link, .service-card, .bento-item, .hp-bento-item, .vdl-card, .cr-btn, .cr-btn-nuevo, .hp-btn';
+
         document.addEventListener('pointerdown', (e) => {
-            const target = e.target.closest('.wp-element-button, .wp-block-button__link, .service-card, .bento-item, a');
+            const target = e.target.closest(INTERACTIVE);
             if (target) {
                 target.style.transform = 'scale(0.97)';
                 target.style.transition = 'transform 0.12s cubic-bezier(0.23, 1, 0.32, 1)';
@@ -167,15 +118,12 @@
     }
 
     /* ------------------------------------------------------------------
-    /* ------------------------------------------------------------------
      * Boot
      * ----------------------------------------------------------------*/
     document.addEventListener('DOMContentLoaded', () => {
         initMaskReveals();
         initColorBlocks();
         initParallax();
-        initStickyHeader();
-        initMobileMenu();
         initMicroMoments();
     });
 

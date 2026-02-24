@@ -71,38 +71,38 @@
 			],
 			"palette": [
 				{
-					"color": "#F0EEE9",
-					"name": "Cloud Dancer",
+					"color": "#0e0c09",
+					"name": "Dark Base",
 					"slug": "theme-1"
 				},
 				{
-					"color": "#0b1d37",
-					"name": "Deep Institutional Blue",
+					"color": "#161411",
+					"name": "Dark Elevated",
 					"slug": "theme-2"
 				},
 				{
-					"color": "#d4af37",
-					"name": "Metallic Gold",
+					"color": "#eca413",
+					"name": "Gold",
 					"slug": "theme-3"
 				},
 				{
-					"color": "#ffffff",
-					"name": "White",
+					"color": "#fcfaf7",
+					"name": "Warm White",
 					"slug": "theme-4"
 				},
 				{
-					"color": "#080f1a",
-					"name": "Midnight",
+					"color": "#fcfaf7",
+					"name": "Text Primary",
 					"slug": "theme-5"
 				},
 				{
-					"color": "#9a7e2a",
-					"name": "Dark Gold",
+					"color": "rgba(252,250,247,0.6)",
+					"name": "Text Muted",
 					"slug": "theme-6"
 				},
 				{
-					"color": "#f7f5f1",
-					"name": "Warm White",
+					"color": "rgba(236,164,19,0.15)",
+					"name": "Border Gold",
 					"slug": "theme-7"
 				}
 			]
@@ -183,7 +183,7 @@
 				{
 					"fontFace": [
 						{
-							"fontFamily": "Cinzel Decorative",
+							"fontFamily": "Cinzel",
 							"fontStyle": "normal",
 							"fontWeight": "400",
 							"src": [
@@ -191,7 +191,7 @@
 							]
 						},
 						{
-							"fontFamily": "Cinzel Decorative",
+							"fontFamily": "Cinzel",
 							"fontStyle": "normal",
 							"fontWeight": "700",
 							"src": [
@@ -199,48 +199,14 @@
 							]
 						}
 					],
-					"fontFamily": "\"Cinzel Decorative\", serif",
-					"name": "Cinzel Decorative",
-					"slug": "cinzel-decorative"
+					"fontFamily": "'Cinzel', serif",
+					"name": "Cinzel",
+					"slug": "cinzel"
 				},
 				{
-					"fontFace": [
-						{
-							"fontFamily": "Poppins",
-							"fontStyle": "normal",
-							"fontWeight": "300",
-							"src": [
-								"file:./assets/fonts/poppins/poppins-300.woff2"
-							]
-						},
-						{
-							"fontFamily": "Poppins",
-							"fontStyle": "normal",
-							"fontWeight": "400",
-							"src": [
-								"file:./assets/fonts/poppins/poppins-400.woff2"
-							]
-						},
-						{
-							"fontFamily": "Poppins",
-							"fontStyle": "normal",
-							"fontWeight": "500",
-							"src": [
-								"file:./assets/fonts/poppins/poppins-500.woff2"
-							]
-						},
-						{
-							"fontFamily": "Poppins",
-							"fontStyle": "normal",
-							"fontWeight": "600",
-							"src": [
-								"file:./assets/fonts/poppins/poppins-600.woff2"
-							]
-						}
-					],
-					"fontFamily": "\"Poppins\", sans-serif",
-					"name": "Poppins",
-					"slug": "poppins"
+					"fontFamily": "'Manrope', sans-serif",
+					"name": "Manrope",
+					"slug": "manrope"
 				}
 			],
 			"fontSizes": [
@@ -615,7 +581,7 @@
 			},
 			"core/navigation": {
 				"typography": {
-					"fontFamily": "var(--wp--preset--font-family--poppins)",
+					"fontFamily": "var(--wp--preset--font-family--manrope)",
 					"fontSize": "var(--wp--preset--font-size--medium)",
 					"lineHeight": "1.5"
 				}
@@ -641,7 +607,7 @@
 			},
 			"core/site-tagline": {
 				"typography": {
-					"fontFamily": "var(--wp--preset--font-family--poppins)",
+					"fontFamily": "var(--wp--preset--font-family--manrope)",
 					"fontSize": "var(--wp--preset--font-size--medium)",
 					"fontWeight": "400"
 				}
@@ -655,9 +621,9 @@
 					}
 				},
 				"typography": {
-					"fontFamily": "var(--wp--preset--font-family--cinzel-decorative)",
+					"fontFamily": "var(--wp--preset--font-family--cinzel)",
 					"fontSize": "24px",
-					"fontWeight": "400",
+					"fontWeight": "700",
 					"lineHeight": {
 						"ref": "styles.blocks.core/navigation.typography.lineHeight"
 					}
@@ -718,7 +684,7 @@
 					}
 				},
 				"typography": {
-					"fontFamily": "var(--wp--preset--font-family--poppins)",
+					"fontFamily": "var(--wp--preset--font-family--manrope)",
 					"fontSize": "var(--wp--preset--font-size--medium)",
 					"fontWeight": "400"
 				}
@@ -781,8 +747,8 @@
 			"heading": {
 				"css": "&.has-background { padding: 0; }",
 				"typography": {
-					"fontFamily": "var(--wp--preset--font-family--poppins)",
-					"fontWeight": "600",
+					"fontFamily": "var(--wp--preset--font-family--cinzel)",
+					"fontWeight": "700",
 					"letterSpacing": "-0.01em",
 					"lineHeight": "1.2"
 				}
@@ -801,7 +767,7 @@
 			}
 		},
 		"typography": {
-			"fontFamily": "var(--wp--preset--font-family--poppins)",
+			"fontFamily": "var(--wp--preset--font-family--manrope)",
 			"fontSize": "var(--wp--preset--font-size--medium)",
 			"fontWeight": "400",
 			"letterSpacing": "0",
