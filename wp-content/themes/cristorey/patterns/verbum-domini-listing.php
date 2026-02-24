@@ -8,7 +8,7 @@
 ?>
 <!-- wp:html -->
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap');
+    /* Fonts loaded globally via style.css */
 
     /* ══ RESET & GLOBAL ══ */
     .vdl-section *,
@@ -408,7 +408,7 @@
 <div class="vdl-section">
     <div class="vdl-hero-wrap">
         <div class="vdl-hero">
-            <p class="vdl-hero-eyebrow">Parroquia Cristo Rey · Reflexión Diaria</p>
+            <p class="vdl-hero-eyebrow">Capellanía Cristo Rey · Reflexión Diaria</p>
             <h1 class="vdl-hero-title">Verbum Domini</h1>
             <p class="vdl-hero-subtitle">Meditaciones diarias que nutren el espíritu<br>desde la Palabra de Dios viva y
                 eficaz.</p>
@@ -464,7 +464,7 @@
                 </div>
                 <!-- /wp:group -->
 
-            <!-- wp:html -->
+                <!-- wp:html -->
             </div>
             <!-- /wp:html -->
 

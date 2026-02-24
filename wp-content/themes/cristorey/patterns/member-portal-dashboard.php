@@ -47,7 +47,7 @@
         <div class="wp-block-column has-theme-1-background-color has-background"
             style="border-color:var(--wp--preset--color--theme-3);border-width:1px;border-style:solid;padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30);flex-basis:40%">
             <!-- wp:heading {"level":3,"textColor":"theme-2"} -->
-            <h3 class="wp-block-heading has-theme-2-color has-text-color">Tu Donación</h3>
+            <h3 class="wp-block-heading has-theme-4-color has-text-color">Tu Donación</h3>
             <!-- /wp:heading -->
             <!-- wp:paragraph -->
             <p>Apoya nuestra misión de evangelización.</p>

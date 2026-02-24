@@ -15,7 +15,7 @@ $new_url = esc_url(home_url('/soy-nuevo/'));
 ?>
 <!-- wp:html -->
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Manrope:wght@300;400;500;600&display=swap');
+    /* Fonts loaded globally via style.css */
 
     /* ══ GLOBAL RESET FOR HEADER WRAPPER ══ */
     .is-sticky-header,
@@ -292,7 +292,7 @@ $new_url = esc_url(home_url('/soy-nuevo/'));
             </svg>
             <div class="cr-brand-text">
                 <span class="cr-brand-name">Cristo Rey</span>
-                <span class="cr-brand-tag">Parroquia</span>
+                <span class="cr-brand-tag">Capellanía</span>
             </div>
         </a>
 
@@ -347,13 +347,23 @@ $new_url = esc_url(home_url('/soy-nuevo/'));
         });
 
         /* Active link */
-        var href = window.location.pathname;
+        var loc = window.location.pathname.replace(/\/+$/, '') || '/';
         document.querySelectorAll('.cr-link').forEach(function (a) {
             try {
-                var path = new URL(a.href).pathname;
-                if (path === '/' ? href === '/' : href.startsWith(path) && path !== '/') {
-                    a.classList.add('cr-active');
+                var linkPath = new URL(a.href).pathname.replace(/\/+$/, '') || '/';
+                var isHome = (linkPath === '/' || linkPath === loc.split('/').slice(0, -1).join('/') || linkPath === loc.replace(/\/[^\/]*$/, ''));
+                var isActive = false;
+
+                if (linkPath === '/') {
+                    /* Home link: only active on exact home page */
+                    isActive = (loc === '/' || loc === linkPath);
+                } else {
+                    /* Other links: active if current path contains the link slug */
+                    var slug = linkPath.split('/').filter(Boolean).pop();
+                    isActive = loc.split('/').filter(Boolean).indexOf(slug) !== -1;
                 }
+
+                if (isActive) a.classList.add('cr-active');
             } catch (e) { }
         });
     })();

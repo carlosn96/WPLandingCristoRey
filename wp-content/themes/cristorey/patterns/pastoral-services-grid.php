@@ -10,7 +10,7 @@
 <div class="wp-block-group alignwide"
     style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
     <!-- wp:heading {"textAlign":"center","style":{"typography":{"textTransform":"uppercase","letterSpacing":"2px"}},"textColor":"theme-2"} -->
-    <h2 class="wp-block-heading has-text-align-center has-theme-2-color has-text-color"
+    <h2 class="wp-block-heading has-text-align-center has-theme-4-color has-text-color"
         style="text-transform:uppercase;letter-spacing:2px">Nuestros Servicios</h2>
     <!-- /wp:heading -->
 

@@ -50,7 +50,7 @@
                 <!-- wp:button {"backgroundColor":"theme-3","textColor":"theme-2","className":"is-style-fill","style":{"border":{"radius":"100px"},"spacing":{"padding":{"top":"14px","bottom":"14px","left":"32px","right":"32px"}},"typography":{"fontSize":"14px","fontWeight":"600","letterSpacing":"0.5px","textTransform":"uppercase"}}} -->
                 <div class="wp-block-button has-custom-font-size is-style-fill"
                     style="font-size:14px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase"><a
-                        class="wp-block-button__link has-theme-2-color has-theme-3-background-color has-text-color has-background wp-element-button"
+                        class="wp-block-button__link has-theme-1-color has-theme-3-background-color has-text-color has-background wp-element-button"
                         href="<?php echo esc_url(home_url('/soy-nuevo/')); ?>"
                         style="border-radius:100px;padding-top:14px;padding-right:32px;padding-bottom:14px;padding-left:32px">Planifica
                         tu Visita</a>

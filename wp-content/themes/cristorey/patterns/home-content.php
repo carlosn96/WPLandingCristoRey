@@ -8,8 +8,7 @@
 ?>
 <!-- wp:html -->
 <style>
-    /* Reset and Premium Plus variables */
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap');
+    /* Fonts loaded globally via style.css */
 
     .home-premium {
         --hp-bg: #0e0c09;

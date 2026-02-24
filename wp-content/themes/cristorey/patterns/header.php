@@ -236,7 +236,7 @@ declare(strict_types=1);
             </svg>
             <div class="cr-logo-text">
                 <span class="cr-logo-title">Cristo Rey</span>
-                <span class="cr-logo-subtitle">Parroquia</span>
+                <span class="cr-logo-subtitle">Capellanía</span>
             </div>
         </a>
 

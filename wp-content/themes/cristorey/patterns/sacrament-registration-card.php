@@ -10,7 +10,7 @@
 <div class="wp-block-group has-theme-1-background-color has-background"
     style="border-color:var(--wp--preset--color--theme-3);border-width:1px;border-style:solid;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40);box-shadow:var(--wp--preset--shadow--natural)">
     <!-- wp:heading {"textAlign":"center","style":{"typography":{"fontStyle":"normal","fontWeight":"700"}},"textColor":"theme-2"} -->
-    <h2 class="wp-block-heading has-text-align-center has-theme-2-color has-text-color"
+    <h2 class="wp-block-heading has-text-align-center has-theme-4-color has-text-color"
         style="font-style:normal;font-weight:700">Registro Sacramental</h2>
     <!-- /wp:heading -->
 

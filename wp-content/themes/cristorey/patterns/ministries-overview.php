@@ -10,7 +10,7 @@
 <div class="wp-block-group alignfull has-theme-1-background-color has-background"
     style="padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80)">
     <!-- wp:heading {"textAlign":"center","level":1,"className":"reveal-mask","style":{"typography":{"textTransform":"uppercase","letterSpacing":"4px","fontWeight":"400"}},"textColor":"theme-2","fontSize":"x-large"} -->
-    <h1 class="wp-block-heading has-text-align-center reveal-mask has-theme-2-color has-text-color has-x-large-font-size"
+    <h1 class="wp-block-heading has-text-align-center reveal-mask has-theme-4-color has-text-color has-x-large-font-size"
         style="font-weight:400;text-transform:uppercase;letter-spacing:4px">Nuestros Ministerios</h1>
     <!-- /wp:heading -->
 
@@ -27,9 +27,9 @@
         <!-- Pastoral Social -->
         <!-- wp:group {"className":"bento-item reveal-mask reveal-delay-1","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}}} -->
         <div class="wp-block-group bento-item reveal-mask reveal-delay-1"
-            style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
+            style="background-color:#161411;color:#fcfaf7;padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
             <!-- wp:heading {"textAlign":"center","level":3,"style":{"typography":{"fontSize":"1.15rem","fontWeight":"600"}},"textColor":"theme-2"} -->
-            <h3 class="wp-block-heading has-text-align-center has-theme-2-color has-text-color"
+            <h3 class="wp-block-heading has-text-align-center has-theme-4-color has-text-color"
                 style="font-size:1.15rem;font-weight:600">Pastoral Social</h3>
             <!-- /wp:heading -->
             <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"0.9rem","fontWeight":"300","lineHeight":"1.7"}},"textColor":"theme-5"} -->
@@ -54,9 +54,9 @@
         <!-- Coros y Liturgia -->
         <!-- wp:group {"className":"bento-item reveal-mask reveal-delay-2","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}}} -->
         <div class="wp-block-group bento-item reveal-mask reveal-delay-2"
-            style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
+            style="background-color:#161411;color:#fcfaf7;padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
             <!-- wp:heading {"textAlign":"center","level":3,"style":{"typography":{"fontSize":"1.15rem","fontWeight":"600"}},"textColor":"theme-2"} -->
-            <h3 class="wp-block-heading has-text-align-center has-theme-2-color has-text-color"
+            <h3 class="wp-block-heading has-text-align-center has-theme-4-color has-text-color"
                 style="font-size:1.15rem;font-weight:600">Coros y Liturgia</h3>
             <!-- /wp:heading -->
             <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"0.9rem","fontWeight":"300","lineHeight":"1.7"}},"textColor":"theme-5"} -->
@@ -81,9 +81,9 @@
         <!-- Catequesis -->
         <!-- wp:group {"className":"bento-item reveal-mask reveal-delay-3","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}}} -->
         <div class="wp-block-group bento-item reveal-mask reveal-delay-3"
-            style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
+            style="background-color:#161411;color:#fcfaf7;padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--40)">
             <!-- wp:heading {"textAlign":"center","level":3,"style":{"typography":{"fontSize":"1.15rem","fontWeight":"600"}},"textColor":"theme-2"} -->
-            <h3 class="wp-block-heading has-text-align-center has-theme-2-color has-text-color"
+            <h3 class="wp-block-heading has-text-align-center has-theme-4-color has-text-color"
                 style="font-size:1.15rem;font-weight:600">Catequesis</h3>
             <!-- /wp:heading -->
             <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"0.9rem","fontWeight":"300","lineHeight":"1.7"}},"textColor":"theme-5"} -->
