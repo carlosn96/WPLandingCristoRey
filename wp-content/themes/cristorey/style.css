@@ -995,3 +995,49 @@ div.wpforms-container-full .wpforms-form .wpforms-error {
     font-size: 0.85rem !important;
     margin-top: 0.25rem !important;
 }
+
+/* ==========================================================================
+   DearFlip 3D Viewer - Premium Dark/Gold Integration
+   ========================================================================== */
+
+/* 1. Transparent Viewer Background (Let the block group background shine through) */
+.df-ui-wrapper {
+    background-color: transparent !important;
+}
+
+/* 2. Style the Toolbar */
+.df-ui-controls {
+    background: rgba(14, 12, 9, 0.85) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(236, 164, 19, 0.15) !important;
+    border-radius: 8px !important;
+    margin-bottom: 20px !important;
+}
+
+/* 3. Style the Icons/Buttons (Gold) */
+.df-ui-btn {
+    color: var(--cr-text) !important;
+    transition: all 0.3s ease !important;
+}
+
+.df-ui-btn:hover {
+    color: var(--cr-gold) !important;
+    background-color: rgba(236, 164, 19, 0.1) !important;
+}
+
+/* Active State for buttons (like thumbnails view, sound, etc) */
+.df-ui-btn.df-active {
+    color: var(--cr-gold) !important;
+}
+
+/* 4. Loader Color */
+.df-loading:after {
+    border-color: rgba(236, 164, 19, 0.2) !important;
+    border-top-color: var(--cr-gold) !important;
+}
+
+/* 5. Outline / Focus fix for accessibility */
+.df-ui-btn:focus {
+    outline: 2px solid var(--cr-gold) !important;
+}

@@ -1,5 +1,5 @@
 <?php
-$config_path = '/home/u487588057/domains/temp.cristoreyrc.com/public_html/wp-config.php';
+$config_path = '/home/u487588057/domains/cristoreyrc.com/public_html/wp-config.php';
 if (!file_exists($config_path)) {
     die("Config not found at $config_path");
 }

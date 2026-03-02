@@ -1,0 +1,557 @@
+/*
+Theme Name: Cristo Rey v2 (Microsoft AI Inspired)
+Theme URI: 
+Author: Jan Dev
+Author URI: 
+Description: Modern theme for Capellanía Cristo Rey inspired by Microsoft AI, featuring smooth scroll and fade-in reveal animations.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: cristorey-v2
+*/
+
+/* ==========================================================================
+   CSS Variables & Tokens
+   ========================================================================== */
+:root {
+  /* Colors */
+  --cr-color-blue: #0b1d37;
+  --cr-color-blue-light: #16305a;
+  --cr-color-gold: #f5d67b;
+  --cr-color-gold-hover: #e0be5a;
+  --cr-color-white: #ffffff;
+  --cr-color-bg: #f8f9fa;
+  --cr-color-text: #2b2b2b;
+
+  /* Fonts */
+  --cr-font-title: 'Cinzel Decorative', serif;
+  --cr-font-body: 'Poppins', sans-serif;
+
+  /* Easing curves (from Microsoft AI) */
+  --cr-ease-premium: cubic-bezier(.43, .195, .02, 1);
+  --cr-ease-standard: cubic-bezier(.25, 1, .5, 1);
+
+  /* Transition durations */
+  --cr-trans-fast: 0.3s;
+  --cr-trans-color: 1.1s;
+  --cr-trans-reveal: 1.3s;
+  --cr-trans-slow: 2.3s;
+}
+
+/* ==========================================================================
+   Smooth Scrolling (Lenis Reset)
+   ========================================================================== */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--cr-font-body);
+  color: var(--cr-color-text);
+  background-color: var(--cr-color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-solemn {
+  font-family: var(--cr-font-title);
+  color: var(--cr-color-blue);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--cr-color-blue);
+  text-decoration: none;
+  transition: color var(--cr-trans-fast) var(--cr-ease-standard);
+}
+
+a:hover {
+  color: var(--cr-color-gold);
+}
+
+/* ==========================================================================
+   Components
+   ========================================================================== */
+/* Pill Button */
+.cr-btn,
+.cr-nav a.cr-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 28px;
+  background-color: var(--cr-color-blue);
+  color: var(--cr-color-white);
+  border-radius: 50px;
+  /* Pill shape */
+  font-weight: 600;
+  font-family: var(--cr-font-body);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  transition: background-color var(--cr-trans-color) var(--cr-ease-premium),
+    color var(--cr-trans-color) var(--cr-ease-premium),
+    transform 0.4s var(--cr-ease-premium);
+  text-decoration: none;
+}
+
+.cr-btn:hover,
+.cr-nav a.cr-btn:hover {
+  background-color: var(--cr-color-gold);
+  color: var(--cr-color-blue);
+  transform: translateY(-2px);
+}
+
+.cr-nav a.cr-btn::after {
+  display: none;
+  /* remove standard nav hover underline */
+}
+
+.cr-btn--outline {
+  background-color: transparent;
+  border: 1px solid var(--cr-color-blue);
+  color: var(--cr-color-blue);
+}
+
+.cr-btn--outline:hover {
+  background-color: var(--cr-color-blue);
+  color: var(--cr-color-white);
+}
+
+.cr-btn--large {
+  padding: 16px 42px;
+  font-size: 1.05rem;
+}
+
+.cr-link-arrow {
+  color: var(--cr-color-gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap var(--cr-trans-fast) var(--cr-ease-standard), color var(--cr-trans-fast) var(--cr-ease-standard);
+}
+
+.cr-link-arrow:hover {
+  gap: 12px;
+  color: var(--cr-color-blue);
+}
+
+/* Base Header */
+.cr-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  background-color: rgba(248, 249, 250, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(11, 29, 55, 0.05);
+  transition: transform 0.4s var(--cr-ease-standard);
+  box-sizing: border-box;
+}
+
+.cr-header.is-hidden {
+  transform: translateY(-100%);
+}
+
+.cr-header__logo {
+  font-family: var(--cr-font-title);
+  font-size: 1.5rem;
+  color: var(--cr-color-blue);
+  font-weight: 700;
+}
+
+.cr-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 32px;
+}
+
+.cr-nav a {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--cr-color-blue);
+  position: relative;
+}
+
+.cr-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--cr-color-gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s var(--cr-ease-premium);
+}
+
+.cr-nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ==========================================================================
+   Animations (GSAP hook classes)
+   ========================================================================== */
+
+/* Fade In (Simple container fade) */
+.g-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  /* Handled by JS */
+}
+
+/* Split Text Reveal Stagger variables */
+/* JS will set --line-index or --word-index on spans */
+.g-reveal-text span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%);
+  /* Transition rule extracted from MS AI */
+  transition: all var(--cr-trans-reveal) calc(var(--line-index, 0) * .07s + var(--word-index, 0) * .03s) var(--cr-ease-premium);
+}
+
+.g-reveal-text.is-revealed span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Layout Blocks */
+.cr-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section-padding {
+  padding: 120px 5%;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 80px 5%;
+  }
+
+  .cr-header {
+    padding: 15px 20px;
+  }
+
+  .cr-nav ul {
+    gap: 16px;
+  }
+}
+
+/* ==========================================================================
+   Global Architecture V2.1 (Centralized Classes)
+   ========================================================================== */
+
+/* Utility colors */
+.cr-text-gold {
+  color: var(--cr-color-gold) !important;
+}
+
+.cr-text-blue {
+  color: var(--cr-color-blue) !important;
+}
+
+.cr-text-white {
+  color: var(--cr-color-white) !important;
+}
+
+.cr-text-dim {
+  opacity: 0.8;
+}
+
+.cr-bg-blue {
+  background-color: var(--cr-color-blue);
+}
+
+.cr-bg-gold {
+  background-color: var(--cr-color-gold);
+}
+
+.cr-bg-white {
+  background-color: var(--cr-color-white);
+}
+
+.cr-bg-bg {
+  background-color: var(--cr-color-bg);
+}
+
+.cr-bg-dark {
+  background-color: #051020;
+}
+
+.cr-border-gold {
+  border-top: 4px solid var(--cr-color-gold);
+}
+
+/* Typography */
+.cr-overline {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.cr-hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 25px;
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+}
+
+.cr-hero-text {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 35px;
+}
+
+/* Hero Section Base */
+.cr-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  color: var(--cr-color-white);
+  padding: 120px 5%;
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 4px solid var(--cr-color-gold);
+  background-color: var(--cr-color-blue);
+}
+
+/* Override global heading color inside heroes */
+.cr-hero h1,
+.cr-hero h2,
+.cr-hero h3,
+.cr-hero h4,
+.cr-hero h5,
+.cr-hero h6,
+.cr-hero .font-solemn,
+.cr-hero .cr-hero-title {
+  color: var(--cr-color-white);
+}
+
+.cr-hero--tall {
+  min-height: 90vh;
+}
+
+.cr-hero--split {
+  text-align: left;
+  min-height: 85vh;
+}
+
+.cr-hero__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Consistent Contrast Overlay */
+.cr-hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(11, 29, 55, 0.7) 0%, rgba(11, 29, 55, 0.95) 100%);
+}
+
+.cr-hero--split .cr-hero__bg::after {
+  background: linear-gradient(to right, rgba(11, 29, 55, 0.95) 0%, rgba(11, 29, 55, 0.6) 100%);
+}
+
+.cr-hero__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cr-hero--split .cr-hero__inner {
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Cluster / Funnel Cards */
+.cr-cluster-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+}
+
+.cr-card {
+  background: var(--cr-color-white);
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform var(--cr-trans-fast) ease, box-shadow var(--cr-trans-fast) ease;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(11, 29, 55, 0.05);
+}
+
+.cr-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(11, 29, 55, 0.1);
+}
+
+.cr-card--inverse {
+  background-color: var(--cr-color-blue);
+  color: var(--cr-color-white);
+  border-color: transparent;
+}
+
+.cr-card--inverse .font-solemn,
+.cr-card--inverse h1,
+.cr-card--inverse h2,
+.cr-card--inverse h3,
+.cr-card--inverse h4 {
+  color: var(--cr-color-gold);
+}
+
+.cr-card__title {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+.cr-card__text {
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+  flex-grow: 1;
+  line-height: 1.7;
+}
+
+.cr-card__image {
+  height: 220px;
+  margin: -40px -40px 30px -40px;
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cr-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 20px;
+}
+
+.cr-card--inverse .cr-links-list {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.cr-links-list a {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Content Sections */
+.cr-section {
+  padding: 100px 5%;
+}
+
+/* Dark backgrounds: headings should be gold */
+.cr-bg-dark .font-solemn,
+.cr-bg-dark h1,
+.cr-bg-dark h2,
+.cr-bg-dark h3,
+.cr-bg-dark h4 {
+  color: var(--cr-color-gold);
+}
+
+/* Dark backgrounds: standard text should be white */
+.cr-bg-dark p,
+.cr-bg-dark span,
+.cr-bg-dark li {
+  color: var(--cr-color-white);
+}
+
+/* Blue bg: headings should be gold */
+.cr-bg-blue .font-solemn,
+.cr-bg-blue h1,
+.cr-bg-blue h2,
+.cr-bg-blue h3,
+.cr-bg-blue h4 {
+  color: var(--cr-color-gold);
+}
+
+/* Verbum Domini homepage preview */
+.fp-verbum-visual .font-solemn {
+  color: var(--cr-color-gold) !important;
+}
+
+@media (max-width: 900px) {
+  .cr-hero--split .cr-hero__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .cr-hero--split .cr-hero__bg::after {
+    background: linear-gradient(to bottom, rgba(11, 29, 55, 0.7) 0%, rgba(11, 29, 55, 0.95) 100%);
+  }
+
+  .fp-verbum-inner {
+    grid-template-columns: 1fr !important;
+  }
+}

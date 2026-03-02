@@ -1,0 +1,16 @@
+Prompts utilizados para generar los fondos 'Hero' estandarizados para mantener la armonía de Verbum Domini (Estilo Dark/Gold Premium):
+
+1. Front Page (hero_front_page.webp):
+"Abstract majestic 3D glass forms in deep navy blue space, illuminated by subtle soft golden divine light, elegant, premium, sleek, cinematic, dark mode website hero background, no text, 16:9, 8k resolution"
+
+2. Descubre la Fe (hero_descubre.webp):
+"Abstract 3D representation of an open book or pages made of dark glass in deep navy blue space, illuminated by soft golden light rays, elegant, premium, sleek, cinematic, dark mode website hero background, no text, 16:9, 8k resolution"
+
+3. Vive tu Fe (hero_vive.webp):
+"Abstract 3D soft flowing liquid or fabric in deep navy blue, with a gentle glowing golden light at the center evoking sacredness, elegant, premium, sleek, cinematic, dark mode website background, no text, 16:9, 8k resolution"
+
+4. Sirve y Participa (hero_sirve.webp):
+"Abstract 3D interlocking rings made of dark translucent glass in deep navy blue space, glowing with warm soft golden light, representing community, elegant, premium, smooth gradients, dark mode website hero background, no text, 16:9, 8k resolution"
+
+5. Soy Nuevo (hero_soy_nuevo.webp):
+"Abstract inviting portal or soft pathway made of dark glass in deep navy blue space, illuminated by welcoming soft golden light, elegant, premium, sleek, cinematic, dark mode website hero background, no text, 16:9, 8k resolution"

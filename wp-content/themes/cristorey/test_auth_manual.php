@@ -1,5 +1,5 @@
 <?php
-require_once('/home/u487588057/domains/temp.cristoreyrc.com/public_html/wp-load.php');
+require_once('/home/u487588057/domains/cristoreyrc.com/public_html/wp-load.php');
 
 $user_login = 'carlos_n96@hotmail.com';
 $password = 'NdMiAWTf5zKWgQFeKZO3zlOB';

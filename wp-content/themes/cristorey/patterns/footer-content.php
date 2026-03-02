@@ -406,7 +406,7 @@
     <!-- Bottom Bar -->
     <div class="cr-footer-bottom">
         <div class="cr-footer-bottom-inner">
-            <p class="cr-footer-copyright">© <?php echo date('Y'); ?> Capellanía Cristo Rey del Universo · Todos los
+            <p class="cr-footer-copyright">© <?php echo date('Y'); ?> Capellanía Cristo Rey · Todos los
                 derechos reservados.</p>
             <div class="cr-footer-legal">
                 <a href="<?php echo esc_url(home_url('/privacidad/')); ?>">Privacidad</a>

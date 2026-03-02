@@ -1,6 +1,6 @@
 <?php
 // Script para extraer sales (DEBUG SOLAMENTE)
-$config = file_get_contents('/home/u487588057/domains/temp.cristoreyrc.com/public_html/wp-config.php');
+$config = file_get_contents('/home/u487588057/domains/cristoreyrc.com/public_html/wp-config.php');
 preg_match_all("/define\(\s*'([A-Z_]+)'\s*,\s*'([^']+)'\s*\);/", $config, $matches);
 
 $salts = array();

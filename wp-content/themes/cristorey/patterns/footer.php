@@ -71,22 +71,6 @@ declare( strict_types = 1 );
     <!-- /wp:column --></div>
     <!-- /wp:columns -->
 
-    <!-- wp:spacer {"height":"var:preset|spacing|20"} -->
-    <div style="height:var(--wp--preset--spacing--20)" aria-hidden="true" class="wp-block-spacer"></div>
-    <!-- /wp:spacer -->
-
-    <!-- wp:paragraph {"align":"center","fontSize":"small"} -->
-    <p class="has-text-align-center has-small-font-size">
-            <?php
-			printf(
-				/* translators: %1$s: WordPress.org link opening tag, %2$s: the closing tag. */
-				esc_html__( 'Designed with %1$sWordPress%2$s', 'assembler' ),
-				'<a href="https://wordpress.org" rel="nofollow">',
-                '</a>'
-			);
-			?></p>
-    <!-- /wp:paragraph -->
-
     <!-- wp:spacer {"height":"var:preset|spacing|60"} -->
     <div style="height:var(--wp--preset--spacing--60)" aria-hidden="true" class="wp-block-spacer"></div>
     <!-- /wp:spacer --></div>

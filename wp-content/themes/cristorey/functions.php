@@ -132,6 +132,10 @@ function assembler_head_optimizations()
 	<!-- Preload Critical Fonts -->
 	<link rel="stylesheet"
 		href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Manrope:wght@300;400;500;600&display=swap" />
+	<!-- FontAwesome Icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+		integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<!-- Critical CSS to prevent FOUC/Layout Shift -->
 	<style>
@@ -149,62 +153,62 @@ function assembler_head_optimizations()
 
 	<!-- Schema.org JSON-LD -->
 	<script type="application/ld+json">
-																							{
-																							  "@context": "https://schema.org",
-																							  "@type": "CatholicChurch",
-																							  "@id": "<?php echo esc_url(home_url('/#organization')); ?>",
-																							  "name": "Capellanía Cristo Rey del Universo",
-																							  "description": "Una comunidad católica basada en la Espiritualidad de la Comunión y Fraternidad.",
-																							  "url": "<?php echo esc_url(home_url()); ?>",
-																							  "logo": "<?php echo esc_url(get_site_icon_url()); ?>",
-																							  "image": "<?php echo esc_url(get_site_icon_url()); ?>",
-																							  "address": {
-																								"@type": "PostalAddress",
-																								"streetAddress": "<?php echo esc_js(wp_strip_all_tags(get_option('cr_inst_address', 'Calle del Santuario #123, Ciudad, CP 12345'))); ?>",
-																								"addressCountry": "MX"
-																							  },
-																							  "geo": {
-																								"@type": "GeoCoordinates",
-																								"latitude": 20.659698,
-																								"longitude": -103.349609
-																							  },
-																							  "telephone": "<?php echo esc_js(get_option('cr_inst_phone', '+52-33-1234-5678')); ?>",
-																							  "openingHoursSpecification": [
 																								{
-																								  "@type": "OpeningHoursSpecification",
-																								  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-																								  "opens": "09:00",
-																								  "closes": "19:00"
-																								},
-																								{
-																								  "@type": "OpeningHoursSpecification",
-																								  "dayOfWeek": "Saturday",
-																								  "opens": "10:00",
-																								  "closes": "20:00"
-																								},
-																								{
-																								  "@type": "OpeningHoursSpecification",
-																								  "dayOfWeek": "Sunday",
-																								  "opens": "08:00",
-																								  "closes": "21:00"
+																								  "@context": "https://schema.org",
+																								  "@type": "CatholicChurch",
+																								  "@id": "<?php echo esc_url(home_url('/#organization')); ?>",
+																								  "name": "Capellanía Cristo Rey del Universo",
+																								  "description": "Una comunidad católica basada en la Espiritualidad de la Comunión y Fraternidad.",
+																								  "url": "<?php echo esc_url(home_url()); ?>",
+																								  "logo": "<?php echo esc_url(get_site_icon_url()); ?>",
+																								  "image": "<?php echo esc_url(get_site_icon_url()); ?>",
+																								  "address": {
+																									"@type": "PostalAddress",
+																									"streetAddress": "<?php echo esc_js(wp_strip_all_tags(get_option('cr_inst_address', 'Calle del Santuario #123, Ciudad, CP 12345'))); ?>",
+																									"addressCountry": "MX"
+																								  },
+																								  "geo": {
+																									"@type": "GeoCoordinates",
+																									"latitude": 20.659698,
+																									"longitude": -103.349609
+																								  },
+																								  "telephone": "<?php echo esc_js(get_option('cr_inst_phone', '+52-33-1234-5678')); ?>",
+																								  "openingHoursSpecification": [
+																									{
+																									  "@type": "OpeningHoursSpecification",
+																									  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+																									  "opens": "09:00",
+																									  "closes": "19:00"
+																									},
+																									{
+																									  "@type": "OpeningHoursSpecification",
+																									  "dayOfWeek": "Saturday",
+																									  "opens": "10:00",
+																									  "closes": "20:00"
+																									},
+																									{
+																									  "@type": "OpeningHoursSpecification",
+																									  "dayOfWeek": "Sunday",
+																									  "opens": "08:00",
+																									  "closes": "21:00"
+																									}
+																								  ]
 																								}
-																							  ]
-																							}
-																							</script>
+																								</script>
 	<script type="application/ld+json">
-																							{
-																							  "@context": "https://schema.org",
-																							  "@type": "WebSite",
-																							  "@id": "<?php echo esc_url(home_url('/#website')); ?>",
-																							  "url": "<?php echo esc_url(home_url()); ?>",
-																							  "name": "<?php echo esc_js(get_bloginfo('name')); ?>",
-																							  "description": "<?php echo esc_js(get_bloginfo('description')); ?>",
-																							  "publisher": {
-																								"@id": "<?php echo esc_url(home_url('/#organization')); ?>"
-																							  },
-																							  "inLanguage": "es-MX"
-																							}
-																							</script>
+																								{
+																								  "@context": "https://schema.org",
+																								  "@type": "WebSite",
+																								  "@id": "<?php echo esc_url(home_url('/#website')); ?>",
+																								  "url": "<?php echo esc_url(home_url()); ?>",
+																								  "name": "<?php echo esc_js(get_bloginfo('name')); ?>",
+																								  "description": "<?php echo esc_js(get_bloginfo('description')); ?>",
+																								  "publisher": {
+																									"@id": "<?php echo esc_url(home_url('/#organization')); ?>"
+																								  },
+																								  "inLanguage": "es-MX"
+																								}
+																								</script>
 	<?php
 }
 add_action('wp_head', 'assembler_head_optimizations');
