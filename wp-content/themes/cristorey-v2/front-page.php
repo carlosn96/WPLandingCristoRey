@@ -33,6 +33,10 @@ $new_url = esc_url(home_url('/soy-nuevo/'));
             <p class="g-fade-in cr-hero-text">
                 Una comunidad viva donde descubrimos el amor de Dios, vivimos nuestra fe y servimos con alegría.
             </p>
+            <div class="g-fade-in" style="margin-top: 2rem;">
+                <a href="<?php echo esc_url(home_url('/contacto/')); ?>" class="cr-btn cr-btn--large"
+                    style="background-color: var(--cr-color-gold); color: var(--cr-color-blue);">Visítanos</a>
+            </div>
         </div>
     </section>
 

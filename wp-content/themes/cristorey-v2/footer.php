@@ -14,28 +14,38 @@
             <div class="cr-social-links" style="display: flex; flex-wrap: wrap; gap: 15px;">
                 <?php if ($fb = get_option('cr_inst_facebook')): ?>
                     <a href="<?php echo esc_url($fb); ?>" class="cr-text-gold" target="_blank" rel="noopener"
-                        style="opacity: 0.8; transition: opacity 0.3s ease; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px;"
-                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">Facebook</a>
+                        style="opacity: 0.8; transition: opacity 0.3s ease; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 6px;"
+                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                        <i class="fa-brands fa-facebook"></i> Facebook
+                    </a>
                 <?php endif; ?>
                 <?php if ($ig = get_option('cr_inst_instagram')): ?>
                     <a href="<?php echo esc_url($ig); ?>" class="cr-text-gold" target="_blank" rel="noopener"
-                        style="opacity: 0.8; transition: opacity 0.3s ease; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px;"
-                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">Instagram</a>
+                        style="opacity: 0.8; transition: opacity 0.3s ease; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 6px;"
+                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                        <i class="fa-brands fa-instagram"></i> Instagram
+                    </a>
                 <?php endif; ?>
                 <?php if ($yt = get_option('cr_inst_youtube')): ?>
                     <a href="<?php echo esc_url($yt); ?>" class="cr-text-gold" target="_blank" rel="noopener"
-                        style="opacity: 0.8; transition: opacity 0.3s ease; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px;"
-                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">YouTube</a>
+                        style="opacity: 0.8; transition: opacity 0.3s ease; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 6px;"
+                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                        <i class="fa-brands fa-youtube"></i> YouTube
+                    </a>
                 <?php endif; ?>
                 <?php if ($tk = get_option('cr_inst_tiktok')): ?>
                     <a href="<?php echo esc_url($tk); ?>" class="cr-text-gold" target="_blank" rel="noopener"
-                        style="opacity: 0.8; transition: opacity 0.3s ease; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px;"
-                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">TikTok</a>
+                        style="opacity: 0.8; transition: opacity 0.3s ease; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 6px;"
+                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                        <i class="fa-brands fa-tiktok"></i> TikTok
+                    </a>
                 <?php endif; ?>
                 <?php if ($wa = get_option('cr_inst_whatsapp')): ?>
                     <a href="<?php echo esc_url($wa); ?>" class="cr-text-gold" target="_blank" rel="noopener"
-                        style="opacity: 0.8; transition: opacity 0.3s ease; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px;"
-                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">WhatsApp</a>
+                        style="opacity: 0.8; transition: opacity 0.3s ease; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 6px;"
+                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                    </a>
                 <?php endif; ?>
             </div>
         </div>

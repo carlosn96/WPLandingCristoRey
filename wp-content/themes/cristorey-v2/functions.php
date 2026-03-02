@@ -51,6 +51,9 @@ function cristorey_v2_scripts()
     // 2. Main Stylesheet
     wp_enqueue_style('cristorey-v2-style', get_stylesheet_uri(), array(), wp_get_theme()->get('Version'));
 
+    // 2.5 FontAwesome
+    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css', array(), '6.5.1');
+
     // --- SCRIPTS ---
 
     // 3. Lenis (Smooth Scroll)
