@@ -17,11 +17,7 @@
 !automation/
 !automation/**
 
-# ===========================================
-# Permitir carpeta scripts/ y todo su contenido
-# ===========================================
-!scripts/
-!scripts/**
+scripts
 
 # ===========================================
 # Permitir Tema Personalizado y Plugins Propios
@@ -34,6 +30,8 @@ wp-content/*
 wp-content/themes/*
 !wp-content/themes/cristorey/
 !wp-content/themes/cristorey/**
+!wp-content/themes/cristorey-v2/
+!wp-content/themes/cristorey-v2/**
 
 # 2. Must-Use Plugins (lógica de backend)
 !wp-content/mu-plugins/
