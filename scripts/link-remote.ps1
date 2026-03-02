@@ -35,8 +35,7 @@ if (-not $Password -or -not $Ip -or -not $Port -or -not $User) {
 Write-Host "`n🔗 Enlazando contenido en servidor remoto..." -ForegroundColor Cyan
 Write-Host "=============================================" -ForegroundColor Cyan
 
-# Cadena literal en Bash para ejecutar todos los enlaces de manera segura
-$RemoteCmd = "cd ~/domains/temp.cristoreyrc.com/public_html && rm -rf cristorey-institucional verbum-image-manager automation scripts wp-content/plugins/cristorey-institucional wp-content/plugins/verbum-image-manager wp-content/themes/cristorey ; ln -s deploy-src/automation automation ; ln -s deploy-src/scripts scripts ; cd wp-content/themes/ && ln -s ../../deploy-src/wp-content/themes/cristorey cristorey ; cd ../plugins/ && ln -s ../../deploy-src/wp-content/plugins/cristorey-institucional cristorey-institucional && ln -s ../../deploy-src/wp-content/plugins/verbum-image-manager verbum-image-manager"
+$RemoteCmd = "cd ~/domains/cristoreyrc.com/public_html && rm -rf cristorey-institucional verbum-image-manager automation scripts wp-content/plugins/cristorey-institucional wp-content/plugins/verbum-image-manager wp-content/themes/cristorey wp-content/themes/cristorey-v2 ; ln -s deploy-src/automation automation ; ln -s deploy-src/scripts scripts ; cd wp-content/themes/ && ln -s ../../deploy-src/wp-content/themes/cristorey cristorey && ln -s ../../deploy-src/wp-content/themes/cristorey-v2 cristorey-v2 ; cd ../plugins/ && ln -s ../../deploy-src/wp-content/plugins/cristorey-institucional cristorey-institucional && ln -s ../../deploy-src/wp-content/plugins/verbum-image-manager verbum-image-manager"
 
 Write-Host "Iniciando conexion SSH con $User en $Ip (Puerto: $Port)..." -ForegroundColor Yellow
 
