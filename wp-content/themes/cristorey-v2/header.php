@@ -23,6 +23,11 @@
             </div><!-- .site-branding -->
 
             <nav id="site-navigation" class="cr-nav">
+                <button class="cr-menu-toggle" aria-controls="site-navigation" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="cr-menu-toggle__box">
+                        <span class="cr-menu-toggle__inner"></span>
+                    </span>
+                </button>
                 <?php
                 $home_url = esc_url(home_url('/'));
                 $descubre_url = esc_url(home_url('/descubre-la-fe/'));

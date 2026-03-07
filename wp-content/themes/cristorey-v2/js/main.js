@@ -83,4 +83,34 @@ document.addEventListener("DOMContentLoaded", (event) => {
             // onLeaveBack: () => text.classList.remove('is-revealed')
         });
     });
+
+    // 4. Mobile Menu Toggle
+    const menuToggle = document.querySelector('.cr-menu-toggle');
+    const nav = document.querySelector('.cr-nav');
+
+    if (menuToggle && nav) {
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('is-active');
+            nav.classList.toggle('is-open');
+            header.classList.toggle('is-menu-open');
+            
+            // Disable body scroll when menu is open
+            if (nav.classList.contains('is-open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close menu when clicking a link
+        const navLinks = nav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('is-active');
+                nav.classList.remove('is-open');
+                header.classList.remove('is-menu-open');
+                document.body.style.overflow = '';
+            });
+        });
+    }
 });
