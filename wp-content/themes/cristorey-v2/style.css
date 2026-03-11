@@ -865,6 +865,27 @@ a:hover {
   color: var(--cr-color-gold) !important;
 }
 
+/* Ensure the Semana Santa hero card has explicit light background and readable text
+   when rendered on dark hero backgrounds (fixes remote styling overrides) */
+.semana-santa-hero__aside.cr-card {
+  background: var(--cr-color-white) !important;
+  color: var(--cr-color-text) !important;
+  border-color: rgba(11,29,55,0.06) !important;
+}
+
+.semana-santa-hero__aside.cr-card .cr-card__title {
+  color: var(--cr-color-blue) !important;
+}
+
+.semana-santa-hero__aside.cr-card .cr-card__text {
+  color: rgba(11,29,55,0.9) !important;
+}
+
+.semana-santa-hero__aside.cr-card a,
+.semana-santa-hero__aside.cr-card .cr-link-arrow {
+  color: var(--cr-color-blue) !important;
+}
+
 .semana-santa-programa__container {
   max-width: 1200px;
 }
