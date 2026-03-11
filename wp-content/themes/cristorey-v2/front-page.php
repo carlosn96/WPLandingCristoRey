@@ -13,6 +13,8 @@ $vive_url = esc_url(home_url('/vive-tu-fe/'));
 $sirve_url = esc_url(home_url('/sirve-y-participa/'));
 $verbum_url = esc_url(home_url('/verbum-domini-hub/'));
 $new_url = esc_url(home_url('/soy-nuevo/'));
+$semana_santa_url = esc_url(home_url('/semana-santa/'));
+$editorial_url = esc_url(home_url('/editorial/'));
 
 ?>
 
@@ -57,7 +59,26 @@ $new_url = esc_url(home_url('/soy-nuevo/'));
         </div>
     </section>
 
-    <!-- 3. El Triángulo Evangelizador (Embudo V2) -->
+    <!-- 3. Destacado Litúrgico: Semana Santa -->
+    <section class="cr-section cr-bg-bg fp-semana-santa">
+        <div class="cr-container fp-semana-santa__inner">
+            <div class="g-fade-in fp-semana-santa__content">
+                <p class="cr-overline cr-text-gold">Especial Litúrgico</p>
+                <h2 class="font-solemn cr-text-blue fp-semana-santa__title">Programa de Semana Santa 2026</h2>
+                <p class="cr-text-dim fp-semana-santa__text">
+                    Celebra con nosotros cada misterio de la Pasión, Muerte y Resurrección del Señor. Consulta horarios,
+                    celebraciones y momentos de oración en una página diseñada para vivir intensamente estos días santos.
+                </p>
+                <a href="<?php echo $semana_santa_url; ?>" class="cr-btn cr-btn--large">Ver Programa Completo</a>
+            </div>
+            <div class="g-fade-in fp-semana-santa__visual" aria-hidden="true">
+                <p class="font-solemn">Semana Santa</p>
+                <span>Capellanía Cristo Rey</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. El Triángulo Evangelizador (Embudo V2) -->
     <section class="cr-section cr-bg-bg">
         <div class="cr-container" style="max-width: 1200px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 70px;">
@@ -115,7 +136,7 @@ $new_url = esc_url(home_url('/soy-nuevo/'));
         </div>
     </section>
 
-    <!-- 4. Marca Editorial: Verbum Domini Highlight -->
+    <!-- 5. Marca Editorial: Verbum Domini Highlight -->
     <section class="cr-section cr-bg-white">
         <div class="cr-container"
             style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 80px; align-items: center;">
@@ -143,7 +164,25 @@ $new_url = esc_url(home_url('/soy-nuevo/'));
         </div>
     </section>
 
-    <!-- 5. Vatican News Highlight -->
+    <!-- 6. Editorial Highlight -->
+    <section class="cr-section cr-bg-bg fp-editorial">
+        <div class="cr-container" style="max-width: 1200px; margin: 0 auto; display: flex; gap: 36px; align-items: center;">
+            <div style="flex:1;">
+                <p class="cr-overline cr-text-gold g-fade-in">Editorial</p>
+                <h2 class="font-solemn cr-text-blue g-fade-in" style="font-size: clamp(2rem, 3.5vw, 2.6rem);">Editorial: Marzo</h2>
+                <p class="cr-text-dim g-fade-in" style="max-width: 60ch;">Reflexiones, artículos y recursos pastorales para acompañar la vida de nuestra comunidad. Consulta el número de marzo en formato libro digital.</p>
+                <div class="g-fade-in" style="margin-top:18px;"><a href="<?php echo $editorial_url; ?>" class="cr-btn">Ver Editorial</a></div>
+            </div>
+            <div style="width:360px; min-height:220px; border-radius:12px; background:linear-gradient(135deg, rgba(11,29,55,0.95), rgba(22,48,90,0.9)); display:flex; align-items:center; justify-content:center; box-shadow:0 30px 60px rgba(11,29,55,0.12);">
+                <div style="text-align:center; color:var(--cr-color-gold);">
+                    <p class="font-solemn" style="margin:0; font-size:1.6rem;">Editorial</p>
+                    <small style="display:block;margin-top:8px; color:rgba(255,255,255,0.8); text-transform:uppercase; letter-spacing:0.12em;">Marzo</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Vatican News Highlight -->
     <section class="cr-section cr-bg-bg" style="padding-bottom: 20px;">
         <div class="cr-container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
             <div class="g-fade-in" style="max-width: 800px; margin: 0 auto 40px auto;">
