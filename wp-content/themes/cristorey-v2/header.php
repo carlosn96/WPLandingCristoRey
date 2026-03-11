@@ -38,6 +38,7 @@
                 $sche_url = esc_url(home_url('/horarios/'));
                 $contact_url = esc_url(home_url('/contacto/'));
                 $new_url = esc_url(home_url('/soy-nuevo/'));
+                $editorial_url = esc_url(home_url('/editorial/'));
                 ?>
                 <ul>
                     <li><a href="<?php echo $home_url; ?>">Inicio</a></li>
@@ -45,6 +46,7 @@
                     <li><a href="<?php echo $vive_url; ?>">Vive tu Fe</a></li>
                     <li><a href="<?php echo $sirve_url; ?>">Sirve y Participa</a></li>
                     <li><a href="<?php echo $verbum_url; ?>">Verbum Domini</a></li>
+                    <li><a href="<?php echo $editorial_url; ?>">Editorial</a></li>
                     <li><a class="cr-btn" href="<?php echo $new_url; ?>">Soy Nuevo</a></li>
                 </ul>
             </nav><!-- #site-navigation -->
