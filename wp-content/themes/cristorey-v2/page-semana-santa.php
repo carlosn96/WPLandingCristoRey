@@ -42,7 +42,7 @@ if (empty($flipbook_markup) && shortcode_exists('dflip')) {
 
     <section class="cr-hero cr-hero--split cr-bg-dark semana-santa-hero">
         <div class="cr-hero__bg"
-            style="background-image: url('<?php echo esc_url(get_template_directory_uri() . '/assets/images/heroes/hero_front_page_trad.png'); ?>');">
+            style="background-image: url('<?php echo esc_url(get_template_directory_uri() . '/assets/images/semana_santa_front.png'); ?>');">
         </div>
         <div class="cr-hero__inner">
             <div class="g-fade-in semana-santa-hero__copy">

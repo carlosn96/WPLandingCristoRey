@@ -42,6 +42,110 @@ $editorial_url = esc_url(home_url('/editorial/'));
         </div>
     </section>
 
+
+
+    <!-- 3. Destacado Litúrgico: Semana Santa -->
+    <section class="cr-section cr-bg-bg fp-semana-santa">
+        <div class="cr-container" style="max-width: 1200px; margin: 0 auto; display: flex; gap: 36px; align-items: center; flex-wrap: wrap;">
+            <div class="g-fade-in fp-semana-santa__content" style="flex:1; min-width: 300px;">
+                <p class="cr-overline cr-text-gold">Especial Litúrgico</p>
+                <h2 class="font-solemn cr-text-blue fp-semana-santa__title" style="font-size: clamp(2rem, 3.5vw, 2.6rem);">Programa de Semana Santa 2026</h2>
+                <p class="cr-text-dim fp-semana-santa__text" style="max-width: 60ch;">
+                    Celebra con nosotros cada misterio de la Pasión, Muerte y Resurrección del Señor. Consulta horarios,
+                    celebraciones y momentos de oración en una página diseñada para vivir intensamente estos días
+                    santos.
+                </p>
+                <div style="margin-top:18px;">
+                    <a href="<?php echo $semana_santa_url; ?>" class="cr-btn cr-btn--large">Ver Programa Completo</a>
+                </div>
+            </div>
+            
+            <a href="<?php echo $semana_santa_url; ?>" class="g-fade-in"
+                style="display:block; width:480px; max-width: 100%; aspect-ratio: 16/10; border-radius:12px; overflow:hidden; box-shadow:0 30px 60px rgba(11,29,55,0.12); position:relative;">
+                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/semana_santa_front.png'); ?>" 
+                     alt="Programa de Semana Santa" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+            </a>
+        </div>
+    </section>
+
+    <!-- 6. Editorial Highlight -->
+    <?php
+    $latest_args_fp = array(
+        'post_type'      => 'editorial',
+        'posts_per_page' => 1,
+        'post_status'    => 'publish',
+    );
+    $latest_query_fp = new WP_Query($latest_args_fp);
+    if ($latest_query_fp->have_posts()) :
+        $latest_query_fp->the_post();
+        $fp_editorial_id = get_the_ID();
+        $fp_editorial_title = get_the_title();
+        $fp_editorial_excerpt = has_excerpt() ? get_the_excerpt() : wp_trim_words(get_the_content(), 15);
+        $fp_editorial_link = get_permalink($fp_editorial_id);
+    ?>
+    <section class="cr-section cr-bg-bg fp-editorial">
+        <div class="cr-container"
+            style="max-width: 1200px; margin: 0 auto; display: flex; gap: 36px; align-items: center; flex-wrap: wrap;">
+            <div style="flex:1; min-width: 300px;">
+                <p class="cr-overline cr-text-gold g-fade-in">Última Edición</p>
+                <h2 class="font-solemn cr-text-blue g-fade-in" style="font-size: clamp(2rem, 3.5vw, 2.6rem);"><?php echo esc_html($fp_editorial_title); ?></h2>
+                <p class="cr-text-dim g-fade-in" style="max-width: 60ch;">
+                    <?php echo esc_html($fp_editorial_excerpt); ?>
+                </p>
+                <div class="g-fade-in" style="margin-top:18px;">
+                    <a href="<?php echo esc_url($fp_editorial_link); ?>" class="cr-btn">Leer Edición</a>
+                    <a href="<?php echo $editorial_url; ?>" class="cr-link-arrow" style="margin-left: 20px;">
+                        Ver Archivo <span class="arrow">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+            
+            <?php if (has_post_thumbnail()): ?>
+                <a href="<?php echo esc_url($fp_editorial_link); ?>" class="g-fade-in"
+                    style="display:block; width:420px; max-width: 100%; aspect-ratio: 3/2; border-radius:12px; overflow:hidden; box-shadow:0 30px 60px rgba(11,29,55,0.12); position:relative;">
+                    <?php the_post_thumbnail('large', ['style' => 'width:100%; height:100%; object-fit:cover;']); ?>
+                </a>
+            <?php else: ?>
+                <div class="g-fade-in"
+                    style="width:420px; min-height:280px; border-radius:12px; background:linear-gradient(135deg, rgba(11,29,55,0.95), rgba(22,48,90,0.9)); display:flex; align-items:center; justify-content:center; box-shadow:0 30px 60px rgba(11,29,55,0.12);">
+                    <div style="text-align:center; color:var(--cr-color-gold);">
+                        <p class="font-solemn" style="margin:0; font-size:1.6rem;">Editorial</p>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+    </section>
+    <?php 
+    wp_reset_postdata();
+    endif; 
+    ?>
+
+    <!-- 6. Vatican News Highlight -->
+    <section class="cr-section cr-bg-bg" style="padding-bottom: 20px;">
+        <div class="cr-container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <div class="g-fade-in" style="max-width: 800px; margin: 0 auto 40px auto;">
+                <p class="cr-overline cr-text-gold">Comunión Universal</p>
+                <h2 class="font-solemn cr-text-blue"
+                    style="font-size: clamp(2.5rem, 4vw, 3.5rem); margin-bottom: 25px; line-height: 1.1;">
+                    Desde el Vaticano
+                </h2>
+                <p class="cr-text-dim" style="font-size: 1.15rem; line-height: 1.8;">
+                    Sigue de cerca el magisterio del Santo Padre, las noticias de la Santa Sede y el latir de la
+                    Iglesia universal, integrado directamente desde Vatican News.
+                </p>
+            </div>
+
+            <!-- Vatican News Official Widget Script -->
+            <div class="g-fade-in vatican-widget-wrapper"
+                style="max-width: 1000px; margin: 0 auto; background: var(--cr-color-white); border-radius: 12px; box-shadow: 0 20px 40px rgba(11,29,55,0.08); overflow: hidden; text-align: left;">
+                <vaticannews-widget lang="es" fontSize="14" carouselVideoAuto="true"
+                    carouselVideoTime="fast"></vaticannews-widget>
+                <script src="https://www.vaticannews.va/widget.js"></script>
+            </div>
+        </div>
+    </section>
+
     <!-- 2. Llamado a la Acción Inmediato (Soy Nuevo) -->
     <section class="cr-section cr-bg-white" style="border-bottom: 1px solid rgba(11,29,55,0.05);">
         <div class="cr-container g-fade-in" style="max-width: 900px; margin: 0 auto; text-align: center;">
@@ -56,25 +160,6 @@ $editorial_url = esc_url(home_url('/editorial/'));
                 esperar en tu primera visita y déjanos darte la bienvenida personalmente.
             </p>
             <a href="<?php echo $new_url; ?>" class="cr-btn cr-btn--large">Planifica tu Visita</a>
-        </div>
-    </section>
-
-    <!-- 3. Destacado Litúrgico: Semana Santa -->
-    <section class="cr-section cr-bg-bg fp-semana-santa">
-        <div class="cr-container fp-semana-santa__inner">
-            <div class="g-fade-in fp-semana-santa__content">
-                <p class="cr-overline cr-text-gold">Especial Litúrgico</p>
-                <h2 class="font-solemn cr-text-blue fp-semana-santa__title">Programa de Semana Santa 2026</h2>
-                <p class="cr-text-dim fp-semana-santa__text">
-                    Celebra con nosotros cada misterio de la Pasión, Muerte y Resurrección del Señor. Consulta horarios,
-                    celebraciones y momentos de oración en una página diseñada para vivir intensamente estos días santos.
-                </p>
-                <a href="<?php echo $semana_santa_url; ?>" class="cr-btn cr-btn--large">Ver Programa Completo</a>
-            </div>
-            <div class="g-fade-in fp-semana-santa__visual" aria-hidden="true">
-                <p class="font-solemn">Semana Santa</p>
-                <span>Capellanía Cristo Rey</span>
-            </div>
         </div>
     </section>
 
@@ -164,48 +249,9 @@ $editorial_url = esc_url(home_url('/editorial/'));
         </div>
     </section>
 
-    <!-- 6. Editorial Highlight -->
-    <section class="cr-section cr-bg-bg fp-editorial">
-        <div class="cr-container" style="max-width: 1200px; margin: 0 auto; display: flex; gap: 36px; align-items: center;">
-            <div style="flex:1;">
-                <p class="cr-overline cr-text-gold g-fade-in">Editorial</p>
-                <h2 class="font-solemn cr-text-blue g-fade-in" style="font-size: clamp(2rem, 3.5vw, 2.6rem);">Editorial: Marzo</h2>
-                <p class="cr-text-dim g-fade-in" style="max-width: 60ch;">Reflexiones, artículos y recursos pastorales para acompañar la vida de nuestra comunidad. Consulta el número de marzo en formato libro digital.</p>
-                <div class="g-fade-in" style="margin-top:18px;"><a href="<?php echo $editorial_url; ?>" class="cr-btn">Ver Editorial</a></div>
-            </div>
-            <div style="width:360px; min-height:220px; border-radius:12px; background:linear-gradient(135deg, rgba(11,29,55,0.95), rgba(22,48,90,0.9)); display:flex; align-items:center; justify-content:center; box-shadow:0 30px 60px rgba(11,29,55,0.12);">
-                <div style="text-align:center; color:var(--cr-color-gold);">
-                    <p class="font-solemn" style="margin:0; font-size:1.6rem;">Editorial</p>
-                    <small style="display:block;margin-top:8px; color:rgba(255,255,255,0.8); text-transform:uppercase; letter-spacing:0.12em;">Marzo</small>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- 6. Vatican News Highlight -->
-    <section class="cr-section cr-bg-bg" style="padding-bottom: 20px;">
-        <div class="cr-container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <div class="g-fade-in" style="max-width: 800px; margin: 0 auto 40px auto;">
-                <p class="cr-overline cr-text-gold">Comunión Universal</p>
-                <h2 class="font-solemn cr-text-blue"
-                    style="font-size: clamp(2.5rem, 4vw, 3.5rem); margin-bottom: 25px; line-height: 1.1;">
-                    Desde el Vaticano
-                </h2>
-                <p class="cr-text-dim" style="font-size: 1.15rem; line-height: 1.8;">
-                    Sigue de cerca el magisterio del Santo Padre, las noticias de la Santa Sede y el latir de la
-                    Iglesia universal, integrado directamente desde Vatican News.
-                </p>
-            </div>
 
-            <!-- Vatican News Official Widget Script -->
-            <div class="g-fade-in vatican-widget-wrapper"
-                style="max-width: 1000px; margin: 0 auto; background: var(--cr-color-white); border-radius: 12px; box-shadow: 0 20px 40px rgba(11,29,55,0.08); overflow: hidden; text-align: left;">
-                <vaticannews-widget lang="es" fontSize="14" carouselVideoAuto="true"
-                    carouselVideoTime="fast"></vaticannews-widget>
-                <script src="https://www.vaticannews.va/widget.js"></script>
-            </div>
-        </div>
-    </section>
+
 
 </main>
 

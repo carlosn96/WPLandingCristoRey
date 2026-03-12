@@ -38,7 +38,8 @@
                 $sche_url = esc_url(home_url('/horarios/'));
                 $contact_url = esc_url(home_url('/contacto/'));
                 $new_url = esc_url(home_url('/soy-nuevo/'));
-                $editorial_url = esc_url(home_url('/editorial/'));
+                $editorial_url = esc_url(get_post_type_archive_link('editorial'));
+                if (!$editorial_url) { $editorial_url = esc_url(home_url('/editorial/')); } // fallback
                 ?>
                 <ul>
                     <li><a href="<?php echo $home_url; ?>">Inicio</a></li>

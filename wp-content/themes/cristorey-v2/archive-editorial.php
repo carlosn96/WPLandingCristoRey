@@ -1,7 +1,7 @@
 <?php
 /**
- * Template Name: Editorial - Marzo
- * Description: Plantilla para la sección Editorial que muestra el PDF editorial-marzo.pdf usando dFlip.
+ * Plantilla principal de Archivo para la sección Editorial (Revistas)
+ * Muestra el último número en grande y la hemeroteca abajo.
  */
 
 get_header();
