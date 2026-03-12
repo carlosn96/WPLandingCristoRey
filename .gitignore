@@ -48,6 +48,7 @@ wp-content/plugins/*
 !wp-content/plugins/wordfence/
 !wp-content/plugins/updraftplus/
 !wp-content/plugins/w3-total-cache/
+!wp-content/plugins/cr-editorial-manager/
 
 # ===========================================
 # Excluir archivos generados dentro del tema

@@ -1,0 +1,73 @@
+.cr-editorial-wrap {
+    max-width: 800px;
+}
+
+.cr-card-admin {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    padding: 2desktop0px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+.cr-card-admin h1, .cr-card-admin h2 {
+    margin-top: 0;
+}
+
+.cr-form-row {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #f0f0f1;
+}
+
+.cr-form-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.cr-form-row label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.cr-media-uploader {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cr-preview-box {
+    width: 150px;
+    height: 150px;
+    background-color: #f6f7f7;
+    border: 1px dashed #dcdcde;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 4px;
+    color: #8c8f94;
+    overflow: hidden;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.cr-preview-box.pdf-box {
+    width: 200px;
+    height: 100px;
+    background: #eef6ff;
+    border-color: #b0d3ff;
+    color: #2271b1;
+}
+
+.cr-actions {
+    background: #fcfcfc;
+    padding: 20px -20px -20px -20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
